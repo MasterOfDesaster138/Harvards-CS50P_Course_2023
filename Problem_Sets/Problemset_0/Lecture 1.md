@@ -1,7 +1,9 @@
-Notes for Lecture 1 - Functions & Variables
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------------------------------------------------------------------------------------
+                                Notes for Lecture 1 - Functions & Variables
+-----------------------------------------------------------------------------------------------------------------------------
 
 ## Creating Code with Python ##
+-----------------------------------------------------------------------------------------------------------------------------
 VS Code is a special type of text editor that is called a compiler. At the top, you’ll notice a text editor and, 
 at the bottom you will see a terminal where you can execute commands.
 In the terminal, you can execute code hello.py to start coding.
@@ -13,9 +15,11 @@ Next to the dollar sign, type python hello.py and press the enter key on your ke
 Recall, computers really only understand zeros and ones. Therefore, when you run python hello.py, 
 python will interpret the text that you created in hello.py and translate it into the zeros and ones that the computer can understand.
 The result of running the python hello.py program is hello, world. Congrats! You just created your first program.
+-----------------------------------------------------------------------------------------------------------------------------
 
 
 ## Functions ##
+-----------------------------------------------------------------------------------------------------------------------------
 Functions are verbs or actions that the computer or computer language will already know how to perform.
 In your hello.py program, the print function knows how to print to the terminal window.
 The print function takes arguments. In this case, "hello, world" are the arguments that the print function takes.
@@ -26,9 +30,11 @@ Imagine in our hello.py program that accidentally typed print("hello, world" not
 required by the compiler. If I purposefully make this mistake, you’ll the compiler will output an error in the terminal window!
 Often, the error messages will inform you of your mistake and provide you clues on how to fix them. However, 
 there will be many times that the compiler is not this kind.
+-----------------------------------------------------------------------------------------------------------------------------
 
 
-##   Improving Your First Python Program
+##   Improving Your First Python Program ##
+-----------------------------------------------------------------------------------------------------------------------------
 We can personalize your first Python program.
 In our text editor in hello.py we can add another function. 
 input is a function that takes a prompt as an argument. We can edit our code to say
@@ -62,9 +68,11 @@ David
 We are getting closer to the result we might intend!
 
 You can learn more in Python’s documentation on data types.
+-----------------------------------------------------------------------------------------------------------------------------
 
 
-## Comments
+## Comments ##
+-----------------------------------------------------------------------------------------------------------------------------
 Comments are a way for programmers to track what they are doing in their programs and even inform others about their intentions 
 for a block of code. In short, they are notes for yourself and others that will see your code!
 You can add comments to your program to be able to see what it is that your program is doing. 
@@ -75,9 +83,11 @@ name = input("What's your name? ")
 print("hello,")
 print(name)
 Comments can also serve as to-do list for you.
+-----------------------------------------------------------------------------------------------------------------------------
 
 
-## Pseudocode
+## Pseudocode ##
+-----------------------------------------------------------------------------------------------------------------------------
 Pseudocode is an important type of comment that becomes a special type of to-do list, 
 especially when you don’t understand how to accomplish a coding task. 
 For example, in your code, you might edit your code to say:
@@ -107,9 +117,11 @@ name = input("What's your name? ")
 # Print hello and the inputted name
 print("hello,", name)
 The output in the terminal, if we typed “David” we would be hello, David. Success.
+-----------------------------------------------------------------------------------------------------------------------------
 
 
-## Strings and Paremeters
+## Strings and Paremeters ##
+-----------------------------------------------------------------------------------------------------------------------------
 A string, known as a str in Python, is a sequence of text.
 Rewinding a bit in our code back to the following, 
 there was a visual side effect of having the result appear on multiple lines:
@@ -136,18 +148,22 @@ after this first print statement. Providing the name as “David”, the output 
 Parameters, therefore, are arguments that can be taken by a function.
 
 You can learn more in Python’s documentation on print.
+-----------------------------------------------------------------------------------------------------------------------------
 
 
-## A small problem with quotation marks
+## A small problem with quotation marks ##
+-----------------------------------------------------------------------------------------------------------------------------
 Notice how adding quotation marks as part of your string is challenging.
 print("hello,"friend"") will not work and the compiler will throw an error.
 Generally, there are two approaches to fixing this. First, you could simply change the quotes to single quote marks.
 Another, more commonly used approach would be code as print("hello, \"friend\""). 
 The backslashes tell the compiler that the following character should be considered
 a quotation mark in the string and avoid a compiler error.
+-----------------------------------------------------------------------------------------------------------------------------
 
 
-## Formatting Strings
+## Formatting Strings ##
+-----------------------------------------------------------------------------------------------------------------------------
 Probably the most elegant way to use strings would be as follows:
 
 # Ask the user for their name
@@ -210,9 +226,11 @@ name = input("What's your name? ").strip().title()
 # Print the output
 print(f"hello, {name}")
 You can learn more about strings in Python’s documentation on str
+-----------------------------------------------------------------------------------------------------------------------------
 
 
-## Integers or int
+## Integers or int ##
+-----------------------------------------------------------------------------------------------------------------------------
 In Python, an integer is referred to as an int.
 In the world of mathematics, we are familiar with +, -, *, /, and % operators. 
 That last operator % or modulo operator may not be very familiar to you.
@@ -263,16 +281,20 @@ This illustrates that you can run functions on functions. The most inner functio
 and then the outer one is run. First, the input function is run. Then, the int function.
 
 You can learn more in Python’s Documenation of int.
+-----------------------------------------------------------------------------------------------------------------------------
 
 
-## Readability Wins
+## Readability Wins ##
+-----------------------------------------------------------------------------------------------------------------------------
 When deciding on your approach to a coding task, remember that one could make a reasonable argument 
 for many approaches to the same problem. Regardless of what approach you take to a programming task, 
 remember that your code must be readable. You should use comments to give yourself and others clues about what your code is doing. 
 Further, you should create code in a way that is readable.
+-----------------------------------------------------------------------------------------------------------------------------
 
 
-## Float Basics
+## Float Basics ##
+-----------------------------------------------------------------------------------------------------------------------------
 A floating point value is a real number that has a decimal point in it, such as 0.52.
 You can change your code to support floats as follows:
 
@@ -312,9 +334,11 @@ z = round(x + y)
 print(f"{z:,}")
 Though quite cryptic, that print(f"{z:,}") creates a scenario where the outputted z will include commas 
 where the result could look like 1,000 or 2,500.
+-----------------------------------------------------------------------------------------------------------------------------
 
 
-## More on Floats
+## More on Floats ##
+-----------------------------------------------------------------------------------------------------------------------------
 How can we round floating point values? First, modify your code as follows:
 
 # Get the user's input
@@ -355,9 +379,11 @@ print(f"{z:.2f}")
 This cryptic fstring code displays the same as our prior rounding strategy.
 
 You can learn more in Python’s documentation of float.
+-----------------------------------------------------------------------------------------------------------------------------
 
 
-## Def
+## Def ##
+-----------------------------------------------------------------------------------------------------------------------------
 Wouldn’t it be nice to create our own functions?
 Let’s bring back our final code of hello.py by typing code hello.py into the terminal window. 
 Your starting code should look as follows:
@@ -461,9 +487,11 @@ def hello(to="world"):
 
 
 main()
+-----------------------------------------------------------------------------------------------------------------------------
 
 
-## Returning Values
+## Returning Values ##
+-----------------------------------------------------------------------------------------------------------------------------
 You can imagine many scenarios where you don’t just want a function to perform an action, 
 but also to return a value back to the main function. For example, rather than simply printing the calculation of x + y, 
 you may want a function to return the value of this calculation back to another part of your program. 
@@ -481,8 +509,10 @@ def square(n):
 
 main()
 Effectively, x is passed to square. Then, the calculation of x * x is returned back to the main function.
+-----------------------------------------------------------------------------------------------------------------------------
 
-## Summing Up
+## Summing Up ##
+-----------------------------------------------------------------------------------------------------------------------------
 Through the work of this single lecture, you have learned abilities that you will use countless times in your own programs. 
 You have learned about…
 
