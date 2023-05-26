@@ -52,3 +52,24 @@ def percent_to_float(p: str) -> float:
 
 if __name__ == '__main__':
     main()
+    
+    
+
+"""Here’s how to test your code manually:
+
+Run your program with python tip.py. Type $50.00 and press Enter. Then, type 15% and press Enter. 
+Your program should output:
+    Leave $7.50    
+
+Run your program with python tip.py. Type $100.00 and press Enter. Then, type 18% and press Enter. 
+Your program should output:
+    Leave $18.00
+
+Run your program with python tip.py. Type $15.00 and press Enter. Then, type 25% and press Enter. 
+Your program should output:
+    Leave $3.75
+"""
+
+
+
+"""check50 cs50/problems/2022/python/tip"""

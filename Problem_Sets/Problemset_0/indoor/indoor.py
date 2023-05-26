@@ -16,3 +16,14 @@
 """
 
 print(input('What should be converted to indoor voice?: ').lower())
+
+
+""" Testing:
+Run your program with python indoor.py. Type HELLO and press Enter. Your program should output hello.
+Run your program with python indoor.py. Type THIS IS CS50 and press Enter. Your program should output this is cs50.
+Run your program with python indoor.py. Type 50 and press Enter. Your program should output 50.
+"""
+
+"""check50 cs50/problems/2022/python/indoor"""
+
+"""submit50 cs50/problems/2022/python/indoor"""
