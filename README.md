@@ -21,3 +21,9 @@ Repository contains:
     8. *8. Week* | Regular Expressions | [Problemset_7]
     9. *9. Week* | OOP | [Problemset_8]
     10. *10. Week* | Et Cetera | [Problemset_9]
+
+
+## To run check50 ##
+
+check50 <owner>/<repo>/<branch>/<check>
+
