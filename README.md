@@ -27,3 +27,26 @@ Repository contains:
 
 check50 <owner>/<repo>/<branch>/<check>
 
+
+## List of all solved Problems: ##
+
+**Problemset_0:**
+    - Einstein
+    - Making Faces 
+    - Indoor Voice
+    - Playback Speed
+    - Tip Calculator
+
+**Problemset_1:**
+    - Home Federal Savings Bank
+    - Deep Thought
+    - File Extensions
+    - Math Interpreter
+    - Meal Time (With & without optional Challenge)
+
+**Problemset_2:**
+    - camelCase
+    - Coke Machine
+    - Just setting up my twttr
+    - Vanity Plates
+    - Nutrition Facts
