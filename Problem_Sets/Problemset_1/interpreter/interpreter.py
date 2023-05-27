@@ -38,7 +38,7 @@ def main():
     x = int(x)
     z = int(z)
     
-    # call the function for calculation
+    # Print Result for Output
     print(calc_expression(x, y, z))
     
     

@@ -48,7 +48,7 @@ def main():
         'pdf':     'application/pdf',              # Adobe Portable Document Format (PDF)
         'txt':     'text/plain',                   # Text, (generally ASCII or ISO 8859-n)
         'zip':     'application/zip',              # ZIP archive
-    #   'other':    'application/octet-stream',     # Common default if no match is found
+    #   'other':    'application/octet-stream',    # Common default if no match is found
     }
 
     # prompt for a file name 
@@ -63,8 +63,8 @@ def main():
     if file_suffix in key_list:
         media_type = FILE_EXTENSIONS[file_suffix]
         return print(media_type)
-    else:
-        return print('application/octet-stream') # default value
+    else:               # default value
+        return print('application/octet-stream') 
     
     
 
