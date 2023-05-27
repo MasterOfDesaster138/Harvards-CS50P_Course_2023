@@ -27,7 +27,7 @@ def main():
             
             
 def camel_to_snake(camel_case: str) -> str:
-    # separate each Word with an '_'
+    """separate each Word with an '_'"""
     snake_case = ''
     for character in camel_case:
         if character.isupper():

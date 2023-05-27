@@ -19,7 +19,7 @@
 
 def main():
     # init helper variables
-    VALID_COINS = (25, 10, 5) # cents
+    VALID_COINS = (25, 10, 5)       # cents
     COKE_PRICE = 50                 # cents
     amount = 0                      # current amount of user
     change = 0                      # current change for user
@@ -27,9 +27,12 @@ def main():
     # prompt the user for coins in a loop
     while amount < COKE_PRICE:
         coin_prompt = int(input("Insert Coin: "))
+        
+        # check coin acceptance
         if coin_prompt in VALID_COINS:
             amount += coin_prompt
         print("Amount Due:", amount)
+        
         # display owned change for the user
         if amount >= COKE_PRICE:
             print("Enjoy your Coke!")
@@ -37,8 +40,6 @@ def main():
             print("Change Owed:", change)
 
     
-
-
 if __name__ == '__main__':
     main()
     
