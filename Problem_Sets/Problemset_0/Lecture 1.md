@@ -130,6 +130,7 @@ there was a visual side effect of having the result appear on multiple lines:
 name = input("What's your name? ")
 print("hello,")
 print(name)
+
 Functions take arguments that influence their behavior. If we look at the documentation for print 
 you’ll notice we can learn a lot about the arguments that the print function takes.
 Looking at this documentation, you’ll learn that the print function automatically include a piece of code end='\n'. 
@@ -142,6 +143,7 @@ We can modify our code as follows:
 name = input("What's your name? ")
 print("hello,", end="")
 print(name)
+
 By providing end="" we are over-writing the default value of end such that it never creates a new line 
 after this first print statement. Providing the name as “David”, the output in the terminal window will be hello, David.
 
