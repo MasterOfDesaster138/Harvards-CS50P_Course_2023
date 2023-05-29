@@ -46,8 +46,79 @@
 """
 
 def main():
-    pass
+    # prompting a date input
+    date_list = get_input() # [month, day, year]
+    # transform given date to proper format
+    date_str = format_date(date_list)
+    # output the formatted date string
+    print(date_str)
+    
 
+def get_input() -> str:
+    """Prompt and validate a date in month-day-year order.
+        Accepts follwing Formats:
+            -> 9/8/1636
+            -> September 8, 1636"""
+    months = ["January","February","March","April","May","June","July","August","September","October","November","December"]
+    
+    while True:
+        user_input = input("Date: ").strip()
+        
+        try:
+            # check for dateformat like [9/8/1636]
+            if '/' in user_input:
+                # separate the values in a list
+                date_list = user_input.split('/')
+                # convert date values to int for comparsion operations
+                month, day, year = int(date_list[0]), int(date_list[1]), int(date_list[2])
+                # validate if day + month + year are in proper range
+                date_valid = validate_date_range(month, day, year)
+                if date_valid:
+                    return date_list
+                else:
+                    raise ValueError("Given Date not in proper Range. Try Again!")
+              
+            # handle dateformat like [September 8, 1636]
+            else:
+                # transform the input to a list of values
+                date_list = user_input.split()
+                # remove a comma after day
+                date_list[1] = date_list[1].removesuffix(',')
+                # validate the inputted values 
+                if date_list[0] in months:                                   # -> check if full month name matches a month in list 
+                    month = months.index(date_list[0]) + 1                   # transform month name to a number
+                    date_list[0] = str(month)                                # update the date_list
+                    day, year = int(date_list[1]), int(date_list[2])         # convert strings to integers
+                    date_valid = validate_date_range(month, day, year)       # check if given day + month + year are in proper range
+                    if date_valid:
+                        return date_list
+            
+        except:
+            pass                                                           
+                        
+
+def validate_date_range(month: int, day: int, year: int) -> bool:
+    # check for proper range
+    if 0 < month < 13 and 0 < day < 32 and 0 < year: # no max for year
+        # check length of each values
+        if len(str(day)) > 0 and len(str(month)) > 0 and len(str(year)) == 4:
+            return True
+    else:
+        return False
+
+
+def format_date(date_list: list) -> str:
+    """Tranform date format to YYYY-MM-DD."""
+    # unpack date_list
+    month, day, year = date_list
+    
+    # fill up day and month with leading 0 if needed
+    if len(month) < 2:
+        month = '0' + month
+    if len(day) < 2:
+        day = '0' + day
+    
+    return f"{year}-{month}-{day}"
 
 
 if __name__ == '__main__':
