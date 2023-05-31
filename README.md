@@ -55,4 +55,4 @@ check50 <owner>/<repo>/<branch>/<check>
     - Outdated
     - Grocery List
     - Felip's Taqueria
-    
+    - Fuel Gauge
