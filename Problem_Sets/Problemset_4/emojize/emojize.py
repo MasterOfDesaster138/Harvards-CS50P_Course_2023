@@ -21,16 +21,30 @@
         and then outputs the “emojized” version of that str, 
         converting any codes (or aliases) therein to their corresponding emoji.
 """
+# import e third party library 
+import emoji
+
 def main():
-    pass
+    # promts the user and validates the input
+    user_input = get_input()
+    # translates the inputted string and prints it to the user
+    print(f"Output: {emoji.emojize(user_input, language='alias')}")
 
 
 def get_input() -> str:
-    pass
+    """ Prompts the User for a string that can
+        contain any emoji aliases or codes.
 
+    Returns:
+        str: the inputted string
+    """
+    while True:
+        try:
+            # prompts the user
+            return input("Input: ").strip()
 
-def translate_to_emoji(user_input: str) -> str:
-    pass
+        except ValueError:  # catches Errors at the input
+            pass
 
 
 if __name__ == '__main__':
