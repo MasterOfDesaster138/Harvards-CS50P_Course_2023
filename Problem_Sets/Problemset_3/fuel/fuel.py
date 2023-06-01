@@ -27,8 +27,66 @@
             Be sure to catch any exceptions like ValueError or ZeroDivisionError.
 """
 def main():
-    pass
+    # prompt a fraction from user
+    fractions = get_input()
+    # convert the fractions into an percentage value
+    percentage = transform_fraction(fractions)
+    # print the output for the user
+    print(generate_output(percentage))
 
+
+def get_input():
+    """ Prompts a Fraction from user.
+        Formatted as X/Y, wherein each of X and Y is an integer."""
+    while True:
+        fraction_input = input("Fraction: ").strip()
+        try:
+            # separate the numbers for validating
+            fraction_1, fraction_2 = fraction_input.split('/')
+            if validate_fraction(fraction_1, fraction_2):
+                return (int(fraction_1), int(fraction_2))
+            
+        except ValueError:
+            pass
+
+
+def validate_fraction(fraction_1: str, fraction_2: str) -> bool:
+    """ Validate the inputted fraction
+        If, though, X or Y is not an integer, 
+        X is greater than Y, or Y is 0, 
+        instead prompt the user again"""
+    try:
+        # convert strings to integers
+        x, y = int(fraction_1), int(fraction_2)
+        # check fraction validation
+        if x <= y and y != 0:
+            return True
+        else:
+            raise ValueError
+
+    except ValueError:
+        return False
+
+
+def transform_fraction(fractions: tuple) -> int:
+    """ Converts and outputs the fraction,
+        as a percentage rounded to the nearest integer."""
+    fuel_percentage = fractions[0] / fractions[1] * 100
+    return int(round(fuel_percentage, 0))
+
+
+def generate_output(fuel_percentage: int) -> str:
+    """ Generate the Fuel Output for the user.
+        If, though, 1% or less remains, output E instead 
+        to indicate that the tank is essentially empty. 
+        And if 99% or more remains, output F instead 
+        to indicate that the tank is essentially full."""
+    if fuel_percentage <= 1:
+        return "E"
+    elif fuel_percentage >= 99:
+        return "F"
+    else:
+        return f"{fuel_percentage}%"
 
 
 if __name__ == '__main__':
