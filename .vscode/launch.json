@@ -6,8 +6,8 @@
       "request": "launch",
       "program": "${file}",
       "console": "integratedTerminal",
-      "justMyCode": true,
-      "args": ["-f", "slant"]
+      "justMyCode": true
+   /* "args": ["-f", "slant"] debug for figlet.py */
     },
 
     {
@@ -15,8 +15,8 @@
       "type": "python",
       "request": "launch",
       "program": "${file}",
-      "justMyCode": true,
-      "args": ["-f", "slant"]
+      "justMyCode": true
+   /* "args": ["-f", "slant"] debug for figlet.py */
     }
   ]
 }
