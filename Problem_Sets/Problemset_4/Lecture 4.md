@@ -11,12 +11,12 @@
 
 ## Summing Up
 
-### Libraries
+## Libraries
 Generally, libraries are bits of code written by you or others can you can use in your program.
 Python allows you to share functions or features with others as “modules”.
 If you copy and paste code from an old project, chances are you can create such a module or library that you could bring into your new project.
 
-### Random
+## Random
 random is a library that comes with Python that you could import into your own project.
 It’s easier as a coder to stand on the shoulders of prior coders.
 So, how do you load a module into your own program? You can use the word import in your program.
@@ -71,7 +71,7 @@ We now have these three ways above to generate random information.
 You can learn more in Python’s documentation of random.
 
 
-### Statistics
+## Statistics
 Python comes with a built-in statistics library. How might we use this module?
 average is a function of this library that is quite useful. In your terminal window, type code average.py. In the text editor window, modify your code as follows:
 ```python
@@ -86,7 +86,7 @@ Consider the possibilities of using the statistics module in your own programs.
 You can learn more in Python’s documentation of statistics.
 
 
-### Command-Line Arguments
+## Command-Line Arguments
 So far, we have been providing all values within the program that we have created. What if we wanted to be able to take input from the command-line? For example, rather than typing python average.py in the terminal, what if we wanted to be able to type python average.py 100 90 and be able to get the average between 100 and 90?
 sys is a module that allows us to take arguments at the command line.
 **argv** is a function within the sys module that allows us to learn about what the user typed in at the command line. Notice how you will see sys.argv utilized in the code below. In the terminal window, type code name.py. In the text editor, code as follows:
@@ -140,7 +140,7 @@ Notice how we are using a built-in function of sys called exit that allows us to
 
 You can learn more in Python’s documentation of sys.
 
-### slice
+## slice
 slice is a command that allows us to take a list and tell the compiler where we want the compiler to consider the start of the list and the end of the list. For example, modify your code as follows:
 ```python
 import sys
@@ -168,7 +168,7 @@ for arg in sys.argv[1:]:
 Notice that rather than starting the list at 0, we use square brackets to tell the compiler to start at 1 and go to the end using the 1: argument. Running this code, you’ll notice that we can improve our code using relatively simple syntax.
 
 
-### Packages
+## Packages
 One of the reasons Python is so popular is that there are numerous powerful third-party libraries that add functionality. We call these third-party libraries, implemented as a folder, “packages”.
 PyPI is a repository or directory of all available third-party packages currently available.
 cowsay is a well-known package that allows a cow to talk to the user.
@@ -201,7 +201,7 @@ You can learn more on PyPI’s entry for cowsay
 You can find other third-party packages at PyPI
 
 
-### APIs
+## APIs
 APIs or “application program interfaces” allow you to connect to the code of others.
 requests is a package that allows your program to behave as a web browser would.
 In your terminal, type pip install requests. Then, type code itunes.py.
@@ -259,7 +259,7 @@ You can learn more about requests through the library’s documentation.
 You can learn more about JSON in Python’s documentation of JSON.
 
 
-### Making Your Own Libraries
+## Making Your Own Libraries
 You have the ability as a Python programmer to create your own library!
 Imagine situations where you may want to re-use bits of code time and time again or even share them with others!
 We have been writing lots of code to say “hello” so far in this course. Let’s create a package to allow us to say “hello” and “goodbye”. In your terminal window, type code sayings.py. In the text editor, code as follows:
