@@ -59,4 +59,5 @@ check50 <owner>/<repo>/<branch>/<check>
 
 **Problemset_4:**
     - Emojize
-    -
+    - Frank, Ian and Glen’s Letters
+    - Adieu, Adieu
