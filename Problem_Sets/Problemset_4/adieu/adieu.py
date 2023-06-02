@@ -64,7 +64,7 @@ def get_input() -> list:
     # prompt the user for a name in a loop until he stops the input with control-d
     while True:
         try:
-            name_input = ("Name: ").strip()
+            name_input = input("Name: ").strip()
             
             if name_input.isalpha():
                 inputted_names.append(name_input.title())
@@ -117,16 +117,16 @@ def generate_output(names: list) -> str:
         # stores the value of the last name
         last_name = names[-1]
         # prepare a string for the name_suffix_string
-        name_suffix = ''
+        name_suffix = names[0]
         
         # adds an comma between any name in the string
         for name in names:
             # exclude the last name from comma adding
-            if name != last_name:
-                name_suffix = name_suffix + ', '
+            if name != last_name and name != names[0]:
+                name_suffix = name_suffix + ', ' + name
                 
-            else: 
-                break 
+            elif name == last_name:
+                break
             
         return f"{PREFIX} {name_suffix} and {last_name}"
 
@@ -153,3 +153,4 @@ Your program should output:
 """
 
 """check50 cs50/problems/2022/python/adieu"""
+
