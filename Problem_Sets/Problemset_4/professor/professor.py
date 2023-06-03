@@ -51,11 +51,12 @@ def main():
     level = get_level()
     # creates 10 random math problems for that specific level
     for _ in range(10):
+        random.seed()  # Reset the seed for each problem
         x = generate_integer(level)
         y = generate_integer(level)
         problem = f"{x} + {y}"
         answer = x + y
-        # the user has 3 chances to solve the problem
+        # the user has 3 tries to solve the problem
         for _ in range(3):
             if solve_problem(problem, answer):
                 score += 1
