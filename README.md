@@ -61,3 +61,5 @@ check50 <owner>/<repo>/<branch>/<check>
     - Emojize
     - Frank, Ian and Glen’s Letters
     - Adieu, Adieu
+    - Guessing Game
+    - Little Professor
