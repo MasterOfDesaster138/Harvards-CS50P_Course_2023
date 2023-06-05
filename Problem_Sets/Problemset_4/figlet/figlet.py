@@ -47,14 +47,18 @@ FONT_LIST = figlet.getFonts()
 
 def main():
     # program excepts 0 or 2 command line arguments
-    if len(sys.argv) in (1,3):
+    if len(sys.argv) in (1, 2, 3):
         # promts a string from the user
         text_input = input("Input: ")
         
-        # validates the arguments if any given
-        if len(sys.argv) == 3 and validate_cl_arguments() == True:
+        # handles 3 arguments and validates them before executing
+        if len(sys.argv) == 3 and validate_cl_arguments():
             # outputs the figlet to the user
             print(f"{generate_figlet(sys.argv[2], text_input)}")
+            
+        elif len(sys.argv) == 2 and validate_cl_arguments():
+            # iterate through all possible fonts and prints out the given text
+            iter_all_fonts(text_input) # no return value from function
             
         elif validate_cl_arguments:
             # select a random font from the list of avaible fonts from figlet
@@ -78,6 +82,8 @@ def validate_cl_arguments() -> bool:
             the program should exit via sys.exit with an error message."""
     if sys.argv[1] in ('-f', '--font') and sys.argv[2] in FONT_LIST:
         return True
+    elif sys.argv[1] in ('-a', '--all'):
+        return True
     else:
         return False
 
@@ -90,6 +96,12 @@ def generate_figlet(font: str, text: str) -> str:
     # generate figlet for the user of inputted text
     return figlet.renderText(text)
 
+def iter_all_fonts(text: str):
+    """Iterate through all possible Fonts and print the Text out."""
+    for font in FONT_LIST:
+        print(f"{font}:")
+        print(f"{generate_figlet(font, text)}")
+    
 
 if __name__ == '__main__':
     main()
