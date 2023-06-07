@@ -6,8 +6,6 @@
 4. Testing Strings
 5. Organizing Tests into Folders
 
-## Summing Up
-
 ## Unit Tests
 
 Up until now, you have been likely testing your own code using print statements.

@@ -1,14 +1,16 @@
 # Harvards-CS50P_Course
-Repo for the participation at Harvards CS50P Course -> Introduction to Programming with Python 
+
+Repo for the participation at Harvards CS50P Course -> Introduction to Programming with Python
 
 Enrolled at 2023-05-25 from edX
 
 Repository contains:
-- Problem-Set-Solutions of each Lecture 
+
+- Problem-Set-Solutions of each Lecture
 - Notes, Cheatsheets etc
 
+## Course-Roadmap
 
-            Course-Roadmap:
 ---------------------------------------------------
     0. Introduction
     1. *1. Week* | Functions & Variables | [Problemset_0]
@@ -22,17 +24,17 @@ Repository contains:
     9. *9. Week* | OOP | [Problemset_8]
     10. *10. Week* | Et Cetera | [Problemset_9]
 
+## How to run check50 + submit50
 
-## To run check50 ##
+check50 _owner_/_repo_/_branch_/_check_
 
-check50 <owner>/<repo>/<branch>/<check>
+submit50 _owner_/_repo_/_branch_/_check_
 
-
-## List of all solved Problems: ##
+## List of all solved Problems
 
 **Problemset_0:**
     - Einstein
-    - Making Faces 
+    - Making Faces
     - Indoor Voice
     - Playback Speed
     - Tip Calculator
