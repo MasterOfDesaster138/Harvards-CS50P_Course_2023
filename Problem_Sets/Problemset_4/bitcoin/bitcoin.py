@@ -38,21 +38,48 @@
 import requests, sys
 
 
+API_URL = "https://api.coindesk.com/v1/bpi/currentprice.json"
+
 def main():
-    # program requires an command-line argument
+    # program requires a numeric as command-line argument
     if validate_cl_arguments():
-        pass
+        bitcoin_amount = validate_cl_arguments()
+        # request the current bitcoin rate from an API
+        current_usd_rate = request_bitcoin_api(API_URL)
+        # calculate the price for the given input based on current rate
+        price = current_usd_rate * bitcoin_amount
+        # outputs the total price for the user in USD 
+        print(f"${price:,.4f}") # to four decimal places, using , as a thousands separator. 
         
 
 def validate_cl_arguments():
-    try:
-        if len(sys.argv) != 2:
-            raise ValueError
-        else:
+    if len(sys.argv) != 2:
+        sys.exit("Missing command-line argument.")
+    else:
+        try:
             return float(sys.argv[1])
         
-    except ValueError:
-        sys.exit("The program requires a numeric parameter for the number of bitcoins.")
+        except ValueError:
+            sys.exit("Command-line argument is not a number.")
+
+
+def request_bitcoin_api(URL: str) -> float:
+    """requests the current bitcoin api and returns the current bitcoin rate."""
+    try:
+        # request the price for the given amount of bitcoin
+        r = requests.get(API_URL)
+        # dumps the json response into a python dictionary
+        data = r.json()
+        # extract the current bitcoin price (in USD) into a variable as numeric value
+        usd_rate = data['bpi']['USD']['rate']
+        # remove the comma from the string before converting to a float
+        return float(usd_rate.replace(',', ''))
+            
+    except (requests.exceptions.JSONDecodeError, requests.RequestException):
+        sys.exit("Request failed. Try again later.")    
+
+
+
 
 
 if __name__ == '__main__':
@@ -62,13 +89,25 @@ if __name__ == '__main__':
 
 """Here’s how to test your code manually:
 
-Run your program with python bitcoin.py. Your program should use sys.exit to exit with an error message:
-Missing command-line argument   
-Run your program with python bitcoin.py cat. Your program should use sys.exit to exit with an error message:
-Command-line argument is not a number
-Run your program with python bitcoin.py 1. Your program should output the price of a single Bitcoin to four decimal places, using , as a thousands separator.
-Run your program with python bitcoin.py 2. Your program should output the price of two Bitcoin to four decimal places, using , as a thousands separator.
-Run your program with python bitcoin.py 2.5. Your program should output the price of 2.5 Bitcoin to four decimal places, using , as a thousands separator.
+Run your program with python bitcoin.py. 
+Your program should use sys.exit to exit with an error message:
+    Missing command-line argument   
+
+Run your program with python bitcoin.py cat. 
+Your program should use sys.exit to exit with an error message:
+    Command-line argument is not a number
+
+Run your program with python bitcoin.py 1. 
+Your program should output the price of a single Bitcoin 
+to four decimal places, using , as a thousands separator.
+
+Run your program with python bitcoin.py 2. 
+Your program should output the price of two Bitcoin 
+to four decimal places, using , as a thousands separator.
+
+Run your program with python bitcoin.py 2.5. 
+Your program should output the price of 2.5 Bitcoin 
+to four decimal places, using , as a thousands separator.
 """
 
 """check50 cs50/problems/2022/python/bitcoin"""
