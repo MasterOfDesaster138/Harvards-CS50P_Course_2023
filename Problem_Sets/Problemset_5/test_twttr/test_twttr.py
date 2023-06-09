@@ -33,7 +33,37 @@
     
 """
 
-# import the modul we want to test
+# import the function we want to test
 from twttr import shorten
 
 
+def test_shorten_uppercase_word():
+    """Tests if it removes uppercase vowel letters in the word."""
+    assert shorten("HELLO") == "HLL"
+
+
+def test_shorten_lowercase_word():
+    """Tests if it removes lowercase vowel letters in the word."""
+    assert shorten("great") == "grt"
+
+
+def test_shorten_sentence():
+    """Tests if it removes vowels in all words of a sentence."""
+    assert shorten("How are you?") == "Hw r y?" 
+
+
+def test_shorten_numbers():
+    """Tests if numbers remain untreated."""
+    assert shorten("2023") == "2023"
+
+
+def test_shorten_no_vowels():
+    """Tests if an input without vowels remains unhandled."""
+    assert shorten("crypt") == "crypt"
+    
+
+def test_from_instructions():
+    """Tests the manually test instructions from the original Problemset."""
+    assert shorten("Twitter") == "Twttr"
+    assert shorten("What's your name?") == "Wht's yr nm?"
+    assert shorten("CS50") == "CS50"
