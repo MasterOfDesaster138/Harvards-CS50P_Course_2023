@@ -39,8 +39,8 @@ from plates import is_valid
 def test_two_letters():
     """Tests if the function implements the following rule:
     “All vanity plates must start with at least two letters.” """
-    assert is_valid("HEY444") == True
-    assert is_valid("444HEY") == False
+    assert is_valid("HEY44") == True
+    assert is_valid("44HEY") == False
 
 
 def test_max_6_chars():
