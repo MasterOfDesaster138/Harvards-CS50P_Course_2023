@@ -43,27 +43,36 @@ def is_valid(s: str) -> bool:
             The first number used cannot be a ‘0’.”
         “No periods, spaces, or punctuation marks are allowed.”
     """ 
-    # check length (min. 2 and max. 6)
-    if 6 >= len(s) >= 2:
-        # check if the last character is not numeric and if the first 2 characters are letters
-        if s[-1].isalpha() and s[0:2].isalpha():
-            # check if the first used number is not a 0
-            for char in s:
-                if char.isnumeric():
-                    if char == 0:
-                        return False
-            # No periods, spaces, or punctuation marks are allowed
-            for char in s:
-                if char in ('.', ' ', '!'):
-                    return False
-            
-            # if the program flow has not returned yet, then the input must be valid
-            return True
-        
-    # else if any condition failed the programflow will execute this line here
-    return False
-        
-        
+    special_characters = (' ', ',', '.', '?', '!', '-', '_', ';', ':', '=', '/', '\\', '#', '+',
+                          '*', '§', '$', '%', '&', '(', ')', '[', ']', '{'', }', '@', '<', '>')
+    
+    # minimum is 2 and maximum 6 characters
+    if len(s) < 2 or len(s) > 6:
+        return False
+    
+    # must start with at least two letters
+    if not s[0:2].isalpha():
+        return False
+    
+    # loop through each character of the string
+    for char in s:
+        # only letters and numbers valid
+        if char in special_characters:
+            return False
+ 
+    # loop through each character of the string    
+    for char in s:
+        # the first used number cannot be a 0
+        if char.isnumeric():
+            if char == '0' or s[-1].isalpha(): # if there are numbers used, then the plate cannot end with an letter
+                return False
+            else:
+                break
+    
+    # if all conditions passed, the string seems valid      
+    return True  
+    
+
 
 if __name__ == '__main__':
     main()
