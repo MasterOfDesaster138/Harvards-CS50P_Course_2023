@@ -5,7 +5,7 @@
     
     Created: 2023-05-27
     
-    Version: 0.1
+    Version: 0.2
     
     Summary: 
         In Massachusetts, home to Harvard University, it’s possible to request a vanity license plate for your car, 
@@ -26,12 +26,14 @@
         """
         
 def main():
-    plate_input  = input("Type in a Plate: ")
-    print(is_valid(plate_input))
-    
+    plate = input("Plate: ")
+    if is_valid(plate):
+        print("Valid")
+    else:
+        print("Invalid")
 
 
-def is_valid(plate: str) -> str:
+def is_valid(s: str) -> bool:
     """Validate the Plate request based on given rules.
     
          “All vanity plates must start with at least two letters.”
@@ -40,24 +42,28 @@ def is_valid(plate: str) -> str:
             For example, AAA222 would be an acceptable … vanity plate; AAA22A would not be acceptable. 
             The first number used cannot be a ‘0’.”
         “No periods, spaces, or punctuation marks are allowed.”
-    """   
-    if 6 < len(plate) < 2:                                              # holds min. 2 & max. 6 characters
-        return 'Invalid'                               
-        if not plate[0].isalpha() and not plate[1].isalpha():           # starts with min. 2 letters
-            return 'Invalid'                                                
+    """ 
+    # check length (min. 2 and max. 6)
+    if 6 >= len(s) >= 2:
+        # check if the last character is not numeric and if the first 2 characters are letters
+        if s[-1].isalpha() and s[0:2].isalpha():
+            # check if the first used number is not a 0
+            for char in s:
+                if char.isnumeric():
+                    if char == 0:
+                        return False
+            # No periods, spaces, or punctuation marks are allowed
+            for char in s:
+                if char in ('.', ' ', '!'):
+                    return False
+            
+            # if the program flow has not returned yet, then the input must be valid
+            return True
         
-            for char in plate:
-                if char in ('.', ' ', '!'):                             # if not a alpanumeric charater was found return False
-                    return 'Invalid'
-                if char.isdigit() and plate[-1].isalpha():              # if plate contains numbers i cannot ends with letters
-                    return 'Invalid'
+    # else if any condition failed the programflow will execute this line here
+    return False
         
-    if plate[0] == '0':                                                 # cannot start with a '0'
-        return 'Invalid'
-
-    return 'Valid'
-
-
+        
 
 if __name__ == '__main__':
     main()
