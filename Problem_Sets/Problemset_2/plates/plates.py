@@ -66,6 +66,12 @@ def is_valid(s: str) -> bool:
         if char.isnumeric():
             if char == '0' or s[-1].isalpha(): # if there are numbers used, then the plate cannot end with an letter
                 return False
+            # loop through each character from the first occurence of a number
+            pos = s.index(char)
+            for c in s[pos:]:
+                # after used numbers, there are no alpha characters allowed
+                if c.isalpha():
+                    return False
             else:
                 break
     

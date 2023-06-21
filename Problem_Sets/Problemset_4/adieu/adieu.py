@@ -128,7 +128,7 @@ def generate_output(names: list) -> str:
             elif name == last_name:
                 break
             
-        return f"{PREFIX} {name_suffix} and {last_name}"
+        return f"{PREFIX} {name_suffix}, and {last_name}"
 
 
 if __name__ == "__main__":

@@ -5,7 +5,7 @@
     
     Created: 2023-05-27
     
-    Version: 0.1
+    Version: 0.1 -> failed check50
     
     Summary: 
         Even though Windows and macOS sometimes hide them, most files have file extensions, 
@@ -54,8 +54,11 @@ def main():
     # prompt for a file name 
     input_file = input("What's the Name of the File?: ").lower() # set string as lowercase
     input_file = input_file.strip() # remove any whitespaces
-    # split the given input at the '.' to receive the suffix
-    raw_file_name, file_suffix = input_file.split('.')
+     
+    # split the given input at the '.' to receive the suffix and filename separated
+    input_snippets = input_file.split('.')
+    raw_file_name = input_snippets[0]
+    file_suffix = input_snippets[-1]
 
     # get all keys of dict as list
     key_list = list(FILE_EXTENSIONS)

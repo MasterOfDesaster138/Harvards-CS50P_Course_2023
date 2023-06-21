@@ -41,6 +41,7 @@ def test_two_letters():
     “All vanity plates must start with at least two letters.” """
     assert is_valid("HEY44") == True
     assert is_valid("44HEY") == False
+    assert is_valid("12345") == False
 
 
 def test_max_6_chars():
