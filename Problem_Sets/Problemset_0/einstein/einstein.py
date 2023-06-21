@@ -22,11 +22,17 @@ def main():
 
     mass = int(input("What's the given mass in kilograms?: ")) # convert str to int for calculation 
 
-    energy = mass * SPEED_OF_LIGHT **2 # E = mc²
+    energy = compute_energy(mass)
 
     # output = f"Calculated energy measured in Joules is: {energy} for given mass."
     print(energy)
 
+
+
+def compute_energy(mass: int, SPEED_OF_LIGHT: int):
+    """Formula: E = mc²"""
+    return mass * SPEED_OF_LIGHT **2 # E = mc²
+    
 
 if __name__ == '__main__':
     main()
