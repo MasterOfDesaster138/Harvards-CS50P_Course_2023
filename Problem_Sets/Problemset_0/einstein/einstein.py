@@ -5,7 +5,7 @@
     
     Created: 2023-05-26
     
-    Version: 0.1
+    Version: 0.2
     
     Summary:
             Even if you haven’t studied physics (recently or ever!), you might have heard that E=mc², 
@@ -17,15 +17,19 @@
             In a file called einstein.py, implement a program in Python that prompts the user for mass as an integer (in kilograms)
             and then outputs the equivalent number of Joules as an integer. Assume that the user will input an integer.
 """
-SPEED_OF_LIGHT = 300000000 # meters per second
+def main():
+    SPEED_OF_LIGHT = 300000000 # meters per second
 
-mass = int(input("What's the given mass in kilograms?: ")) # convert str to int for calculation 
+    mass = int(input("What's the given mass in kilograms?: ")) # convert str to int for calculation 
 
-energy = mass * SPEED_OF_LIGHT **2 # E = mc²
+    energy = mass * SPEED_OF_LIGHT **2 # E = mc²
 
-# output = f"Calculated energy measured in Joules is: {energy} for given mass."
-print(energy)
+    # output = f"Calculated energy measured in Joules is: {energy} for given mass."
+    print(energy)
 
+
+if __name__ == '__main__':
+    main()
 
 
 
