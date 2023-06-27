@@ -62,6 +62,7 @@ def main():
     csv_file_path = validate_cl_parameter(sys.argv)
     table = generate_pizza_table(csv_file_path)
     print(table)
+    quit()
 
 
 def validate_cl_parameter(cl_parameter: list) -> str:
@@ -76,8 +77,18 @@ def validate_cl_parameter(cl_parameter: list) -> str:
     Raises:
         SystemExit: If the number of arguments is not equal to 2 or if the specified file does not have a .csv extension.
     """
-    pass
-
+    # the user must specify exactly one command-line argument
+    if len(sys.argv) < 2:
+        sys.exit("Too few command-line arguments")
+    elif len(sys.argv) > 2:
+        sys.exit("Too many command-line arguments")
+    else:
+        file_input = sys.argv[1].strip()
+        # check if the given file is an csv file based on the file extension
+        if file_input.endswith(".csv"):
+            return file_input
+        else:
+            sys.exit("Not a CSV file")
     
 
 def generate_pizza_table(csv_path: str) -> str:
@@ -93,7 +104,31 @@ def generate_pizza_table(csv_path: str) -> str:
     Raises:
         SystemExit: If the file does not exist or has an invalid format.
     """
-    pass
+    # initialize an empty list for the extracted csv data
+    csv_data = []
+    try:
+        with open(csv_path, 'r') as file:
+            csv_reader = csv.reader(file)
+            header_row = next(csv_reader)
+            
+            # Determine the appropriate table headers based on the CSV file
+            if "Sicilian Pizza" in header_row:
+                table_headers = header_row[1:]
+            elif "Regular Pizza" in header_row:
+                table_headers = header_row[1:]
+            else:
+                raise ValueError("Invalid CSV file format")
+
+            # Read the remaining rows and collect the data
+            for row in csv_reader:
+                csv_data.append(row)
+                
+            # Format the table using tabulate and return the formatted string
+            table = tabulate(csv_data, headers=table_headers, tablefmt="grid")
+            return table
+        
+    except FileNotFoundError:
+        sys.exit("File does not exist")
 
 
 if __name__ == '__main__':
