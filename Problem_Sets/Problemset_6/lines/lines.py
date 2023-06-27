@@ -109,7 +109,8 @@ def file_handling(file_path: str) -> dict:
                 else:
                     file_stats['SLOC'] += 1
               
-        # returns file_stats dictionary if no error occurs       
+        # returns file_stats dictionary if no error occurs  
+        print(file_stats)     
         return file_stats    
         
     # Catch error, if file or path cannot be found
