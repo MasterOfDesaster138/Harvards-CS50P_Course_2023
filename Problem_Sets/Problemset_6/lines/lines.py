@@ -55,8 +55,8 @@ import sys
 # Functions:
 def main():
     # if the given argument is valid, compute LOC-Metric of the given file
-    if validate_arguments():
-        file_stats = file_handling(sys.argv)
+    if validate_arguments(sys.argv):
+        file_stats = file_handling(sys.argv[1])
 
     if file_stats:
         # Output the total of Source Code Lines of the given file
@@ -71,11 +71,11 @@ def validate_arguments(cl_args) -> bool:
     if len(cl_args) == 1 :
         sys.exit("Too few command-line arguments")
     elif len(cl_args) > 2:
-        sys.exit("To many command-line arguments.")    
+        sys.exit("Too many command-line arguments")    
     else:
         # only python files will be accepted
         if not cl_args[1].endswith(".py"):
-            sys.exit("Not a Python file.")
+            sys.exit("Not a Python file")
         else:
             return True
 
@@ -114,7 +114,7 @@ def file_handling(file_path: str) -> dict:
         
     # Catch error, if file or path cannot be found
     except FileNotFoundError:
-        sys.exit("File does not exist.")
+        sys.exit("File does not exist")
         
 
 
