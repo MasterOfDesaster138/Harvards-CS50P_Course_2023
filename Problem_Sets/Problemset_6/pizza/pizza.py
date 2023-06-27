@@ -113,9 +113,9 @@ def generate_pizza_table(csv_path: str) -> str:
             
             # Determine the appropriate table headers based on the CSV file
             if "Sicilian Pizza" in header_row:
-                table_headers = header_row[1:]
+                table_headers = header_row[:]
             elif "Regular Pizza" in header_row:
-                table_headers = header_row[1:]
+                table_headers = header_row[:]
             else:
                 raise ValueError("Invalid CSV file format")
 
