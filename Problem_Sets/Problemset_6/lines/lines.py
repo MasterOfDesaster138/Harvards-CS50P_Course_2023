@@ -48,9 +48,73 @@
             Assume that any line that only contains whitespace is blank.
     
 """
-def main():
-    pass
+# Import Modules and Libraries
+import sys
 
+
+# Functions:
+def main():
+    # if the given argument is valid, compute LOC-Metric of the given file
+    if validate_arguments():
+        file_stats = file_handling(sys.argv[1])
+
+    if file_stats:
+        # Output the total of Source Code Lines of the given file
+        print(f"{file_stats['SLOC']}")
+        quit()
+
+def validate_arguments() -> bool:
+    """Validates the command-line arguments.
+    Only one argument, a python file name, is accepted."""
+    # the program excepts only one command line argument
+    if len(sys.argv) == 1 :
+        sys.exit("To few command-line arguments.")
+    elif len(sys.argv) > 2:
+        sys.exit("To many command-line arguments.")    
+    else:
+        # only python files will be accepted
+        if not sys.argv[1].endswith(".py"):
+            sys.exit("Not a Python file.")
+        else:
+            return True
+
+
+def file_handling(file_path: str) -> dict:
+    """Handles the File object, inclusive exceptions.
+    Iterates through the file and counts the "LOC Statistics"."""
+    # A dict to store the computed values
+    file_stats = {
+    'LOC': 0,               # Total of all lines, inclusive comments and blanks
+    'SLOC': 0,              # Total of lines, exclusice comments and blanks
+    'CLOC': 0,              # Total of lines, that contains comments
+    'BLOC': 0               # Total of lines, that are blank / holds only whitespace
+}
+    
+    try: # tries to open file from FileDescriptorOrPath String extracted from commmand-line argument
+        with open(file_path, 'r') as file: # opens file in read mode 
+            
+            # iterate through each line from the open file
+            for line in file: 
+                file_stats['LOC'] += 1 # increase LOC_Stat, no matter what the line contains
+                # first remove leading and trailing whitespace before the line will be analyzed
+                line = line.strip()
+                # check for a blank line 
+                if not line:
+                    file_stats['BLOC'] += 1
+                # check if line contains only a comment
+                elif line.startswith('#'):
+                    file_stats['CLOC'] += 1
+                # we assume that every other line content contains either source code or docstrings
+                else:
+                    file_stats['SLOC'] += 1
+              
+        # returns file_stats dictionary if no error occurs       
+        return file_stats    
+        
+    # Catch error, if file or path cannot be found
+    except FileNotFoundError:
+        sys.exit("File does not exist.")
+        
 
 
 if __name__ == '__main__':
