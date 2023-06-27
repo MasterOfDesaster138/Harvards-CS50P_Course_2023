@@ -56,24 +56,25 @@ import sys
 def main():
     # if the given argument is valid, compute LOC-Metric of the given file
     if validate_arguments():
-        file_stats = file_handling(sys.argv[1])
+        file_stats = file_handling(sys.argv)
 
     if file_stats:
         # Output the total of Source Code Lines of the given file
         print(f"{file_stats['SLOC']}")
         quit()
 
-def validate_arguments() -> bool:
+
+def validate_arguments(cl_args) -> bool:
     """Validates the command-line arguments.
     Only one argument, a python file name, is accepted."""
     # the program excepts only one command line argument
-    if len(sys.argv) == 1 :
-        sys.exit("To few command-line arguments.")
-    elif len(sys.argv) > 2:
+    if len(cl_args) == 1 :
+        sys.exit("Too few command-line arguments")
+    elif len(cl_args) > 2:
         sys.exit("To many command-line arguments.")    
     else:
         # only python files will be accepted
-        if not sys.argv[1].endswith(".py"):
+        if not cl_args[1].endswith(".py"):
             sys.exit("Not a Python file.")
         else:
             return True
