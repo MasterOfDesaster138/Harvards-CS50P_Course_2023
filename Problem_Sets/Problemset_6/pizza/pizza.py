@@ -78,12 +78,12 @@ def validate_cl_parameter(cl_parameter: list) -> str:
         SystemExit: If the number of arguments is not equal to 2 or if the specified file does not have a .csv extension.
     """
     # the user must specify exactly one command-line argument
-    if len(sys.argv) < 2:
+    if len(cl_parameter) < 2:
         sys.exit("Too few command-line arguments")
-    elif len(sys.argv) > 2:
+    elif len(cl_parameter) > 2:
         sys.exit("Too many command-line arguments")
     else:
-        file_input = sys.argv[1].strip()
+        file_input = cl_parameter[1].strip()
         # check if the given file is an csv file based on the file extension
         if file_input.endswith(".csv"):
             return file_input

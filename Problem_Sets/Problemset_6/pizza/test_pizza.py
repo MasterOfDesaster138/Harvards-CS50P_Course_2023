@@ -61,49 +61,179 @@ import pytest
 
 # simulate required data for proper functions testing 
 TEST_DATA = {
+    'sicilian_table': """+------------------+---------+---------+
+| Sicilian Pizza   | Small   | Large   |
++==================+=========+=========+
+| Cheese           | $25.50  | $39.95  |
++------------------+---------+---------+
+| 1 item           | $27.50  | $41.95  |
++------------------+---------+---------+
+| 2 items          | $29.50  | $43.95  |
++------------------+---------+---------+
+| 3 items          | $31.50  | $45.95  |
++------------------+---------+---------+
+| Special          | $33.50  | $47.95  |
++------------------+---------+---------+""", 
+    
+    'regular_table': """+-----------------+---------+---------+
+| Regular Pizza   | Small   | Large   |
++=================+=========+=========+
+| Cheese          | $13.50  | $18.95  |
++-----------------+---------+---------+
+| 1 topping       | $14.75  | $20.95  |
++-----------------+---------+---------+
+| 2 toppings      | $15.95  | $22.95  |
++-----------------+---------+---------+
+| 3 toppings      | $16.95  | $24.95  |
++-----------------+---------+---------+
+| Special         | $18.50  | $26.95  |
++-----------------+---------+---------+""", 
+
+    'sicilian_params': ["pizza.py", "sicilian.csv"],
+    
+    'regular_params': ["pizza.py", "regular.csv"], 
+    
+    'too_few_params': ["pizza.py"], 
+    
+    'too_many_params': [ 
+        ["pizza.py", "regular.csv", "sicilian.csv"],
+        ["pizza.py", "regular.csv", "sicilian.csv", "-grid"]
+        ],
+    
+    'invalid_file_extension': [
+        ["pizza.py", "regular.txt"],
+        ["pizza.py", "regular.xsv"] 
+    ]
     
 }
 
 
 ##### Testcases for validate_cl_paramter() #####
 
-def test_validate_cl_parameters_quantity_few():
+def test_validate_cl_parameters_quantity_few(capfd):
     """Tests if the program exits with the correct errormessage, if there are too few cl parameters inputted."""
     expected_error_message = "Too few command-line arguments"
-    pass
+    
+    # setup the simulated values as cl-parameters for proper testing
+    fake_params = TEST_DATA["too_few_params"] 
+    
+    # Testing how the function handles too few cl-parameters
+    with pytest.raises(SystemExit) as run_info:
+        validate_cl_parameter(fake_params)
+        
+        # Check if 'sys.exit' was called
+        assert run_info.type == SystemExit
+        
+        # Get the output message of the standard output stream
+        captured = capfd.readouterr()
+        error_message = captured.err.strip()
+        
+        # Compare captured error message with the expected error message from the requirements
+        assert error_message == expected_error_message
+    
 
-
-def test_validate_cl_parameters_quantity_many():
+def test_validate_cl_parameters_quantity_many(capfd):
     """Tests if the program exits with the correct errormessage, if there are too many cl parameters inputted."""
     expected_error_message = "Too many command-line arguments"
-    pass
+    
+    # setup the simulated values as cl-parameters for proper testing
+    fake_params1, fake_params2 = TEST_DATA["too_many_params"] 
+    
+    # Testcase 1:
+    with pytest.raises(SystemExit) as run_info:
+        validate_cl_parameter(fake_params1)
+        # Check if 'sys.exit' was called
+        assert run_info.type == SystemExit
+        # Get the output message of the standard output stream
+        captured = capfd.readouterr()
+        error_message = captured.err.strip()
+        # Compare captured error message with the expected error message from the requirements
+        assert error_message == expected_error_message
+
+    # Testcase 2:
+    with pytest.raises(SystemExit) as run_info:
+        validate_cl_parameter(fake_params2)
+        # Check if 'sys.exit' was called
+        assert run_info.type == SystemExit
+        # Get the output message of the standard output stream
+        captured = capfd.readouterr()
+        error_message = captured.err.strip()
+        # Compare captured error message with the expected error message from the requirements
+        assert error_message == expected_error_message
+
+
+def test_validate_cl_parameters_file_extensions_invalid(capfd):
+    """Tests if the program exits with the correct errormessage, if the inputted file is not an CSV."""
+    expected_error_message = "Not a CSV file"
+    # setup the simulated values as cl-parameters for proper testing
+    fake_params1, fake_params2 = TEST_DATA['invalid_file_extension'] 
+    
+    # Testcase 1:
+    with pytest.raises(SystemExit) as run_info:
+        validate_cl_parameter(fake_params1)
+        # Check if 'sys.exit' was called
+        assert run_info.type == SystemExit
+        # Get the output message of the standard output stream
+        captured = capfd.readouterr()
+        error_message = captured.err.strip()
+        # Compare captured error message with the expected error message from the requirements
+        assert error_message == expected_error_message
+
+    # Testcase 2:
+    with pytest.raises(SystemExit) as run_info:
+        validate_cl_parameter(fake_params2)
+        # Check if 'sys.exit' was called
+        assert run_info.type == SystemExit
+        # Get the output message of the standard output stream
+        captured = capfd.readouterr()
+        error_message = captured.err.strip()
+        # Compare captured error message with the expected error message from the requirements
+        assert error_message == expected_error_message
 
 
 def test_validate_cl_parameters_file_extensions_valid():
     """Tests if the functions returns excepted value, if the inputted cl-parameter is valid."""
-    pass
-
-
-def test_validate_cl_parameters_file_extensions_invalid():
-    """Tests if the program exits with the correct errormessage, if the inputted file is not an CSV."""
-    expected_error_message = "Not a CSV file"
-    pass
-
-
-def test_validate_cl_parameters_file_not_exists():
-    """Tests if the program exits with the correct errormessage, if the file doesn't exists."""
-    expected_error_message = "File does not exist"
-    pass
-
-
-def test_validate_cl_parameters_file_exists():
-    """Tests if the function returns the expected value, if the file does exists."""
-    pass
+    # setup the simulated values as cl-parameters for proper testing
+    valid_params1 = TEST_DATA["regular_params"]
+    valid_params2 = TEST_DATA["sicilian_params"] 
+    
+    assert validate_cl_parameter(valid_params1) == "regular.csv"
+    assert validate_cl_parameter(valid_params2) == "sicilian.csv"
 
 
 
 ##### Testcases for generate_pizza_table() #####
 
-def test_generate_pizza_table():
-    """Test if the function returns a string, that matches the given data, and is formatted as ascii table in the 'grid' style."""
-    pass
+def test_generate_pizza_table_file_not_exists(capfd):
+    """Tests if the program exits with the correct errormessage, if the file doesn't exists."""
+    expected_error_message = "File does not exist"
+    
+    with pytest.raises(SystemExit) as run_info:
+        generate_pizza_table('invalid_file.csv')
+        
+        # Check if 'sys.exit' was called
+        assert run_info.type == SystemExit
+        
+        # Get the output message of the standard output stream
+        captured = capfd.readouterr()
+        error_message = captured.err.strip()
+        
+        # Compare captured error message with the expected error message from the requirements
+        assert error_message == expected_error_message
+
+
+def test_generate_pizza_table_output_regular():
+    """Test if the function returns a string, that matches the given data for regular.csv, and is formatted as ascii table in the 'grid' style."""
+    expected_output = TEST_DATA["regular_table"]
+    file_name = TEST_DATA["regular_params"][1]
+    
+    assert generate_pizza_table(file_name) == expected_output
+
+
+
+def test_generate_pizza_table_output_sicilian():
+    """Test if the function returns a string, that matches the given data for sicilian.csv, and is formatted as ascii table in the 'grid' style."""
+    expected_output = TEST_DATA["sicilian_table"]
+    file_name = TEST_DATA["sicilian_params"][1]
+    
+    assert generate_pizza_table(file_name) == expected_output
