@@ -26,13 +26,26 @@ You can execute the below to check your code using check50, a program that CS50 
 check50 cs50/problems/2022/python/shirt
 Green smilies mean your program has passed a test! Red frownies will indicate your program output something unexpected.
 Visit the URL that check50 outputs to see the input check50 handed to your program, what output it expected, and what output your program actually gave."""
-
-import os
 import pytest
+import os
 from PIL import Image
 import shutil
 
 from shirt import validate_user_input, input_image_processing
+
+
+file_path_dict = {
+    'overlay_filepath': r"C:\Users\emely\Documents\GitHub\Harvards-CS50P_Course\Problem_Sets\Problemset_6\shirt\shirt.png",
+    
+    'input_filepath1': r"C:\Users\emely\Documents\GitHub\Harvards-CS50P_Course\Problem_Sets\Problemset_6\shirt\before1.jpg",
+    'output_filepath1': r"C:\Users\emely\Documents\GitHub\Harvards-CS50P_Course\Problem_Sets\Problemset_6\shirt\after1.jpg",
+    
+    'input_filepath2': r"C:\Users\emely\Documents\GitHub\Harvards-CS50P_Course\Problem_Sets\Problemset_6\shirt\before2.jpg",
+    'output_filepath2': r"C:\Users\emely\Documents\GitHub\Harvards-CS50P_Course\Problem_Sets\Problemset_6\shirt\after2.jpg",
+    
+    'input_filepath3': r"C:\Users\emely\Documents\GitHub\Harvards-CS50P_Course\Problem_Sets\Problemset_6\shirt\before3.jpg",
+    'output_filepath3': r"C:\Users\emely\Documents\GitHub\Harvards-CS50P_Course\Problem_Sets\Problemset_6\shirt\after3.jpg",
+}
 
 ##### Test cases based on instructions for manually testing #####
 
@@ -61,13 +74,9 @@ def test_input_image_processing_nicht_existierende_datei_manuell():
         input_image_processing("non_existent_image.jpg", "after1.jpg")
     assert str(e.value) == "Input does not exist"
 
-def test_input_image_processing_manuell(tmpdir):
-    input_file = os.path.join(tmpdir, "before1.jpg")
-    output_file = os.path.join(tmpdir, "after1.jpg")
-
-    # Kopiere eine Testdatei als Eingabe
-    test_input = r"C:\Users\emely\Documents\GitHub\Harvards-CS50P_Course\Problem_Sets\Problemset_6\shirt\before1.jpg"
-    shutil.copy(test_input, input_file)
+def test_input_image_processing_manuell():
+    input_file = file_path_dict['input_filepath2']
+    output_file = file_path_dict["output_filepath2"]
 
     # Führe die Bildverarbeitung aus
     input_image_processing(input_file, output_file)
@@ -108,10 +117,10 @@ def test_validate_user_input_valid_input():
 ###### Test cases for input_image_processing function: #####
 
 @pytest.fixture
-def test_files(tmpdir):
+def test_files(tmp_path):
     # Create temporary input and output files for testing
-    input_file = os.path.join(tmpdir, "input.jpg")
-    output_file = os.path.join(tmpdir, "output.jpg")
+    input_file = os.path.join(tmp_path, "input.jpg")
+    output_file = os.path.join(tmp_path, "output.jpg")
 
     # Create a dummy input image
     input_img = Image.new("RGB", (800, 600), color="red")
@@ -123,8 +132,9 @@ def test_input_image_processing_file_not_found():
     with pytest.raises(SystemExit):
         input_image_processing("invalid_input.jpg", "output.jpg")
 
-def test_input_image_processing_output_file_created(test_files):
-    input_file, output_file = test_files
+def test_input_image_processing_output_file_created():
+    input_file = file_path_dict["input_filepath3"]
+    output_file = file_path_dict["output_filepath3"]
     input_image_processing(input_file, output_file)
     assert os.path.isfile(output_file)
 

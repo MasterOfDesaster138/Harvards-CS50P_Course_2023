@@ -162,7 +162,7 @@ def input_image_processing(input: str, output: str) -> Image:
         Image: returns the Imagefile of the result after saving the file
     """
     try:
-        shirt = Image.open("shirt.png")
+        shirt = Image.open(r"C:\Users\emely\Documents\GitHub\Harvards-CS50P_Course\Problem_Sets\Problemset_6\shirt\shirt.png")
         with Image.open(input) as input:
             input_cropped = ImageOps.fit(input, shirt.size)
             input_cropped.paste(shirt, mask = shirt)
