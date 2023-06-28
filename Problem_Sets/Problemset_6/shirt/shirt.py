@@ -66,8 +66,12 @@ or by double-clicking its icon in VS Code’s file explorer."""
 
 
 ##### IMPORTS: #####
-import pillow, sys
+from PIL import Image, ImageOps     # provides extensive file format support + powerful image processing capabilities.
+import sys                          # for handling command-line arguments and exiting the program  
+import os                           # powerful interface for interaction with the operation system
 
+
+##### Variables, Constants and Datacollections: #####
 
 # Create an Container for all required Errormessages
 ERROR_MESSAGES = {
@@ -79,31 +83,94 @@ ERROR_MESSAGES = {
     'file_not_found':       "Input does not exist"
 }
 
-VALID_FILE_TYPES = ('.jpg', '.jpeg', '.png')
+VALID_FILE_TYPES = ('.jpg', '.jpeg', '.png', '.JPG', '.JPEG', '.PNG')
+
+# Size: (600, 600) w+h as px | 
+SHIRT_IMG_PATH = r"C:\Users\emely\Documents\GitHub\Harvards-CS50P_Course\Problem_Sets\Problemset_6\shirt\data\shirt.png" 
+
+
 
 
 ##### FUNCTIONS: #####
 
 def main():
-    pass
+    # Validates the inputted command-line parameters  
+    if validate_user_input(sys.argv):
+        input, output =  sys.argv[1], sys.argv[2] # ( Reference-image | Input-image | Output-image )
+        # Processes the input images according to given instructions (see in header)
+        output_image = input_image_processing(input, output)
+        # exit the programm after finished image processing
+        quit()
 
 
 
 def validate_user_input(cl_args: list):
-    
+    """Validates the command line parameters given by the user and handles not applicable requirements 
+    by terminating the program with a corresponding error message. 
+
+    Args:
+        cl_args (list): List of command-line arguments.
+
+    Returns:
+        bool: True if the user input is valid.
+
+    Raises:
+        SystemExit: Raises a SystemExit exception for various error conditions.
+    """
+
     # Program expects exactly two command-line arguments from the user
     if len(cl_args) < 3:
         sys.exit(ERROR_MESSAGES['too_few_args'])
     elif len(cl_args) > 3:
         sys.exit(ERROR_MESSAGES['too_many_args'])
-    else:
-        # get file names|paths from inputted command line arguments
-        input_file, output_file = cl_args[1:3]
-        
-        # exit the programm, if the input’s and output’s names do not end in '.jpg', '.jpeg', or '.png', case-insensitively
-        if any(input_file.strip().endswith(extension) for extension not in VALID_FILE_TYPES):
-            sys.exit(ERROR_MESSAGES['input_file'])
-        elif any(output_file.strip().endswith(extension) for extension not in VALID_FILE_TYPES):
-            sys.exit(ERROR_MESSAGES['output_file'])
-        # checks if the file extensions of input and output file matches    
-        elif input_file.strip().endswith()
+
+    # Get file names|paths from inputted command line arguments
+    input_file, output_file = cl_args[1:3]
+    
+    # Extract the file extensions for proper comparison
+    input_path = os.path.splitext(input_file)
+    output_path = os.path.splitext(output_file)
+
+    # Exit the program if the input or output file names do not end in '.jpg', '.jpeg', or '.png', case-insensitively
+    if input_path[1] not in VALID_FILE_TYPES:
+        sys.exit(ERROR_MESSAGES['input_file'])
+    elif output_path[1] not in VALID_FILE_TYPES:
+        sys.exit(ERROR_MESSAGES['output_file'])
+
+
+    # Check if the file extensions of input and output files match
+    if input_path[1] != output_path[1]:
+        sys.exit(ERROR_MESSAGES['diff_file_extensions'])
+
+
+    # If no errors occurred so far, the given input and output files seem to be valid
+    return True
+
+                    
+
+def input_image_processing(input: str, output: str) -> Image:
+    """input_image_processing should overlay shirt.png (which has a transparent background) on the input 
+    after resizing and cropping the input to be the same size, saving the result as its output.
+    
+                      in pixel width | height ----   
+    Reference_Imagefile = Size: (600, 600) | 
+
+    Args:
+        filepaths (tuple): contains filepathstring for the Reference, the Input and the Output Images.
+
+    Returns:
+        Image: returns the Imagefile of the result after saving the file
+    """
+    try:
+        shirt = Image.open("shirt.png")
+        with Image.open(input) as input:
+            input_cropped = ImageOps.fit(input, shirt.size)
+            input_cropped.paste(shirt, mask = shirt)
+            input_cropped.save(output)
+    except FileNotFoundError:
+        sys.exit(ERROR_MESSAGES['file_not_found'])
+    
+    
+    
+if __name__ == '__main__': 
+    main()
