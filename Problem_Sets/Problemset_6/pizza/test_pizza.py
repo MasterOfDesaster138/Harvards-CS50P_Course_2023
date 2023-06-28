@@ -31,7 +31,7 @@ your program should print a table like the below:
 | 3 toppings      | $16.95  | $24.95  |
 +-----------------+---------+---------+
 | Special         | $18.50  | $26.95  |
-+-----------------+---------+---------+
++-----------------+---------+---------+ 
 
 
 You can execute the below to check your code using check50, 
@@ -61,34 +61,6 @@ import pytest
 
 # simulate required data for proper functions testing 
 TEST_DATA = {
-    'sicilian_table': """+------------------+---------+---------+
-| Sicilian Pizza   | Small   | Large   |
-+==================+=========+=========+
-| Cheese           | $25.50  | $39.95  |
-+------------------+---------+---------+
-| 1 item           | $27.50  | $41.95  |
-+------------------+---------+---------+
-| 2 items          | $29.50  | $43.95  |
-+------------------+---------+---------+
-| 3 items          | $31.50  | $45.95  |
-+------------------+---------+---------+
-| Special          | $33.50  | $47.95  |
-+------------------+---------+---------+""", 
-    
-    'regular_table': """+-----------------+---------+---------+
-| Regular Pizza   | Small   | Large   |
-+=================+=========+=========+
-| Cheese          | $13.50  | $18.95  |
-+-----------------+---------+---------+
-| 1 topping       | $14.75  | $20.95  |
-+-----------------+---------+---------+
-| 2 toppings      | $15.95  | $22.95  |
-+-----------------+---------+---------+
-| 3 toppings      | $16.95  | $24.95  |
-+-----------------+---------+---------+
-| Special         | $18.50  | $26.95  |
-+-----------------+---------+---------+""", 
-
     'sicilian_params': ["pizza.py", "sicilian.csv"],
     
     'regular_params': ["pizza.py", "regular.csv"], 
@@ -104,7 +76,6 @@ TEST_DATA = {
         ["pizza.py", "regular.txt"],
         ["pizza.py", "regular.xsv"] 
     ]
-    
 }
 
 
@@ -224,8 +195,21 @@ def test_generate_pizza_table_file_not_exists(capfd):
 
 def test_generate_pizza_table_output_regular():
     """Test if the function returns a string, that matches the given data for regular.csv, and is formatted as ascii table in the 'grid' style."""
-    expected_output = TEST_DATA["regular_table"]
-    file_name = TEST_DATA["regular_params"][1]
+    expected_output = """+-----------------+---------+---------+
+| Regular Pizza   | Small   | Large   |
++=================+=========+=========+
+| Cheese          | $13.50  | $18.95  |
++-----------------+---------+---------+
+| 1 topping       | $14.75  | $20.95  |
++-----------------+---------+---------+
+| 2 toppings      | $15.95  | $22.95  |
++-----------------+---------+---------+
+| 3 toppings      | $16.95  | $24.95  |
++-----------------+---------+---------+
+| Special         | $18.50  | $26.95  |
++-----------------+---------+---------+"""
+
+    file_name = r"C:\Users\emely\Documents\GitHub\Harvards-CS50P_Course\Problem_Sets\Problemset_6\pizza\regular.csv"
     
     assert generate_pizza_table(file_name) == expected_output
 
@@ -233,7 +217,20 @@ def test_generate_pizza_table_output_regular():
 
 def test_generate_pizza_table_output_sicilian():
     """Test if the function returns a string, that matches the given data for sicilian.csv, and is formatted as ascii table in the 'grid' style."""
-    expected_output = TEST_DATA["sicilian_table"]
-    file_name = TEST_DATA["sicilian_params"][1]
+    expected_output = """+------------------+---------+---------+
+| Sicilian Pizza   | Small   | Large   |
++==================+=========+=========+
+| Cheese           | $25.50  | $39.95  |
++------------------+---------+---------+
+| 1 item           | $27.50  | $41.95  |
++------------------+---------+---------+
+| 2 items          | $29.50  | $43.95  |
++------------------+---------+---------+
+| 3 items          | $31.50  | $45.95  |
++------------------+---------+---------+
+| Special          | $33.50  | $47.95  |
++------------------+---------+---------+"""
+    
+    file_name = r"C:\Users\emely\Documents\GitHub\Harvards-CS50P_Course\Problem_Sets\Problemset_6\pizza\sicilian.csv"
     
     assert generate_pizza_table(file_name) == expected_output
