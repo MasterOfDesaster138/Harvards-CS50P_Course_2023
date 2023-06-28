@@ -92,7 +92,7 @@ We can further our program’s functionality. However, we need to advance our vo
 |**Symbol** |             **Bedeutung**             |
 |-----------|---------------------------------------|
 | **.**     | Jedes Zeichen außer einer neuen Zeile |
-| *****     | 0 oder mehr Wiederholungen            |
+| ***__     | 0 oder mehr Wiederholungen            |
 | **+**     | 1 oder mehr Wiederholungen            |
 | **?**     | 0 oder 1 Wiederholung                 |
 | **{m}**   | m Wiederholungen                      |
@@ -269,7 +269,7 @@ Adding even more symbols to our vocabulary, here are some more to consider:
 
 |  **Symbol**   |             **Bedeutung**             |
 |---------------|---------------------------------------|
-| **A|B**       | either A or B                         |
+| **A\|B**       | either A or B                         |
 | **(...)**     | a group                               |
 | **(?:...)**   | non-capturing version                 |
 
@@ -319,7 +319,7 @@ Since there is an additional **.**, the program considers this invalid.
 It turns out that we can, looking at our vocabulary from before, we can group together ideas.
 |**Symbol**     |             **Bedeutung**             |
 |---------------|---------------------------------------|
-| **A|B**       |   either A or B                       |
+| **A\|B**       |   either A or B                       |
 | **(...)**     |   a group                             |
 | **(?:...)**   |   non-caputuring version              |
 
@@ -425,7 +425,7 @@ if matches:
 print(f"hello, {name}")
 ```
 
-Notice the addition of the __*__ in our validation statement. This code will now accept and properly process Malan,David. Further, it will properly handle `David,Malan with many spaces in front of David`.
+Notice the addition of the ***__ in our validation statement. This code will now accept and properly process Malan,David. Further, it will properly handle `David,Malan with many spaces in front of David`.
 It is very common to utilize **re.search** as we have in the previous examples, where matches is on a line of code after. However, we can combine these statements:
 
 ```python
@@ -549,7 +549,7 @@ You can learn more in Python’s documentation of re.
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-### Summing Up
+### Replay
 
 Now, you’ve learned a whole new language of regular expressions that can be utilized to validate, clean up, and extract user input.
 
