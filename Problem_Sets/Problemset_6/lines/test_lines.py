@@ -193,14 +193,15 @@ def test_file_handling_filepath_exists():
 def test_file_handling_metric_counter():
     """Tests if the function 'file_handling' determines the expected LOC-KPI for the given file."""
     # setup simulated command line arguments for proper testing of validate_arguments()
-    python_file1, python_file2 = TEST_DOUBLES["python_files"]
+    python_file1 = r"C:\Users\emely\Documents\GitHub\Harvards-CS50P_Course\Problem_Sets\Problemset_6\lines\loc1.py"
+    python_file2 = r"C:\Users\emely\Documents\GitHub\Harvards-CS50P_Course\Problem_Sets\Problemset_6\lines\loc2.py"
     
     # Testcase 1: 'loc1.py'
-    assert file_handling(python_file1[1]) == {'LOC': 22, 'SLOC': 14, 'CLOC': 1, 'BLOC': 7}
+    assert file_handling(python_file1) == {'LOC': 22, 'SLOC': 14, 'CLOC': 1, 'BLOC': 7}
     
     
     # Testcase 2: 'loc2.py'
-    assert file_handling(python_file2[1]) == {'LOC': 3, 'SLOC': 2, 'CLOC': 1, 'BLOC': 0}
+    assert file_handling(python_file2) == {'LOC': 3, 'SLOC': 2, 'CLOC': 1, 'BLOC': 0}
     
     
 def test_file_handling_metric_cornercase():
