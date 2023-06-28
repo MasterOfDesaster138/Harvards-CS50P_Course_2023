@@ -32,42 +32,55 @@ submit50 _owner_/_repo_/_branch_/_check_
 
 ## List of all solved Problems
 
-**Problemset_0:**
+**Problemset_0 - Functions & Variables:**
     - Einstein
     - Making Faces
     - Indoor Voice
     - Playback Speed
     - Tip Calculator
 
-**Problemset_1:**
+**Problemset_1 - Conditionals:**
     - Home Federal Savings Bank
     - Deep Thought
     - File Extensions
     - Math Interpreter
     - Meal Time (With & without optional Challenge)
 
-**Problemset_2:**
+**Problemset_2 - Loops:**
     - camelCase
     - Coke Machine
     - Just setting up my twttr
     - Vanity Plates
     - Nutrition Facts
 
-**Problemset_3:**
+**Problemset_3 - Exceptions:**
     - Outdated
     - Grocery List
     - Felip's Taqueria
     - Fuel Gauge
 
-**Problemset_4:**
+**Problemset_4 - Libraries:**
     - Emojize
     - Frank, Ian and Glen’s Letters
     - Adieu, Adieu
     - Guessing Game
     - Little Professor
 
-**Problemset_5:**
+**Problemset_5 - Unit Tests:**
     - Testing my twttr
     - Back to the Bank
     - Re-requesting a Vanity Plate
     - Refueling
+
+**Problemset_6 - File I/O:**
+    - Lines of Code
+    - Pizza Py
+    - Scourgify
+    - CS50 P-Shirt
+
+**Problemset_7 - Regular Expressions:**
+    - NUMB3RS
+    - Watch on YouTube
+    - Working 9 to 5
+    - Regular, um, Expressions
+    - Response Validation
