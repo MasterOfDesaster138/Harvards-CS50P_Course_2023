@@ -166,6 +166,9 @@ def input_file_reader(input_file: str) -> list:
     except FileNotFoundError:
         sys.exit(f"Could not read {input_file}")
         
+    except csv.Error as e:
+        raise e
+        
 
 def tranformate_data_schema(input_data: list) -> list:
     """tranformate_data_schema from [name, house] to new schema [firstname, lastname, house] and returns converted data collection.
@@ -195,7 +198,7 @@ def output_file_writer(datacollection: list, output_file: str):
     new_fieldnames = ("firstname", "lastname", "house")
     
     # opens the specified output file in append mode for writing operations
-    with open(output_file, 'a') as file:
+    with open(output_file, 'a', newline="") as file:
         # DictWriter parses every row of the collection as an dictionary
         csv_writer = csv.DictWriter(file, fieldnames=new_fieldnames)
         csv_writer.writeheader()
