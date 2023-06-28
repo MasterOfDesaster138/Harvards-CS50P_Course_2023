@@ -196,8 +196,11 @@ def output_file_writer(datacollection: list, output_file: str):
     
     # opens the specified output file in append mode for writing operations
     with open(output_file, 'a') as file:
+        # DictWriter parses every row of the collection as an dictionary
         csv_writer = csv.DictWriter(file, fieldnames=new_fieldnames)
-        csv_writer.writerow({"firstname": datacollection["first"], "lastname": datacollection["last"], "house": datacollection["house"]})
+        # loop through each element of the collection and write the data to the file
+        for row in datacollection:
+            csv_writer.writerow({"firstname": datacollection["first"], "lastname": datacollection["last"], "house": datacollection["house"]})
     
 
 
