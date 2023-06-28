@@ -219,7 +219,7 @@ Notice that we create a list called students. We append each string to this list
 
 Recall that Python allows for **dictionaries** where a key can be associated with a value. This code could be further improved
 
-```python 
+```python
 students = []
 
 with open("students.csv") as file:
@@ -390,7 +390,7 @@ You can learn more in Python’s documentation of CSV.
 One more type of file that we will discuss today is a binary file. A binary file is simply a collection of ones and zeros. This type of file can store anything including, music and image data.
 There is a popular Python library called PIL that works well with image files.
 Animated GIFs are a popular type of image file that has many image files within it that are played in sequence over and over again, creating a simplistic animation or video effect.
-Imagine that we have a series of costumes, as illustrated below. 
+Imagine that we have a series of costumes, as illustrated below.
 (<https://cs50.harvard.edu/python/2022/notes/6/#lecture-6>)
 Here is costume1.gif.
 Cat number 1.
