@@ -97,7 +97,7 @@ def main():
     # Validate the inputted command-line paramters specified from the user
     if validate_user_input(sys.argv):
         # unpack the required file names from user input
-        input_file, output_file = sys.argv[1:2]
+        input_file, output_file = sys.argv[1:3]
         
         # Collects data from csv file into a list 
         input_data = input_file_reader(input_file)
@@ -131,7 +131,7 @@ def validate_user_input(cl_parameters: list) -> bool:
     elif len(cl_parameters) > 3:
         sys.exit("Too many command-line arguments")
     else:
-        if input_file.strip().endswith(".csv"):
+        if cl_parameters[1].strip().endswith(".csv"):
             return True 
         else:
             sys.exit("Not a CSV file")
@@ -182,7 +182,7 @@ def tranformate_data_schema(input_data: list) -> list:
     # we need to loop through all elements of the list
     for row in input_data:
         # Separate first and last name 
-        lastname, firstname = row["name"].split(', ').strip()
+        lastname, firstname = row["name"].split(', ')
         # Collects new dataschema into a prepared list 
         tranformed_data.append({"first": firstname, "last": lastname, "house": row["house"]})
         
@@ -198,12 +198,13 @@ def output_file_writer(datacollection: list, output_file: str):
     with open(output_file, 'a') as file:
         # DictWriter parses every row of the collection as an dictionary
         csv_writer = csv.DictWriter(file, fieldnames=new_fieldnames)
-        # loop through each element of the collection and write the data to the file
+        csv_writer.writeheader()
+        # Loop through each element of the collection and write the data to the file
         for row in datacollection:
-            csv_writer.writerow({"firstname": datacollection["first"], "lastname": datacollection["last"], "house": datacollection["house"]})
+            csv_writer.writerow({"firstname": row["first"], "lastname": row["last"], "house": row["house"]})
+
     
 
-
-
-        
+if __name__ == '__main__':
+    main()
         
