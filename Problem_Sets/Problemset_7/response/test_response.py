@@ -24,12 +24,11 @@ a program that CS50 will use to test your code when you submit.
 But be sure to test it yourself as well!
 
 check50 cs50/problems/2022/python/response"""
-
-import pytest 
 from response import validate_email
 
 
 def test_validate_email_instructions_valid_mail():
+    """Tests the testcases from the instructions, with valid email format inputs."""
     # test a valid and real email 
     assert validate_email("malan@harvard.edu") == "Valid."
     # test random email with proper format
@@ -37,6 +36,7 @@ def test_validate_email_instructions_valid_mail():
     
     
 def test_validate_email_instructions_invalid_mail():
+    """Tests the testcases from the instructions, with invalid email format inputs. """
     # test invalid email format from test instructions
     assert validate_email("malan@@@harvard.edu") == "Invalid."
     # test unusual punctuation in the email 
@@ -44,6 +44,7 @@ def test_validate_email_instructions_invalid_mail():
     
 
 def test_validate_email_cornercases():
+    """Tests cornercases with incorrect formatted input."""
     # try to input an url as email
     assert validate_email("www.google.com") == "Invalid."
     # email without containing any @ character
