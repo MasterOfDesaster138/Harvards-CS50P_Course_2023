@@ -124,6 +124,10 @@ def convert(time_str: str) -> str:
     # Check and convert the start time
     match = re.search(r"\d+", start_time)
     start_hour = int(match.group())
+    # check if the given input is in the valid range
+    if start_hour < 0 or start_hour > 12:
+        raise ValueError("Incorrect input")
+         
     # collect minutes if provided 
     if re.search(r"\d+:\d+", start_time):
         start_minutes = int(start_time.split(":")[1].split()[0])
@@ -143,6 +147,11 @@ def convert(time_str: str) -> str:
     # Check and convert the end time
     match = re.search(r"\d+", end_time)
     end_hour = int(match.group())
+    
+    # check if the given input is in the valid range
+    if 0 > end_hour > 12:
+        raise ValueError("Incorrect input")
+    
     # collect minutes if provided 
     if re.search(r"\d+:\d+", end_time):
         end_minutes = int(end_time.split(":")[1].split()[0])
@@ -158,13 +167,12 @@ def convert(time_str: str) -> str:
         end_hour += 12
     elif time_format == "AM" and end_hour == 12:
         end_hour = 0
-        
+    
     # Check if the time values are valid
     if not (0 <= start_hour <= 23 and 0 <= start_minutes <= 59):
         raise ValueError("Invalid start time")
     if not (0 <= end_hour <= 23 and 0 <= end_minutes <= 59):
         raise ValueError("Invalid end time")
-
     # Format and return the result
     return f"{start_hour:02d}:{start_minutes:02d} to {end_hour:02d}:{end_minutes:02d}"
 

@@ -99,3 +99,31 @@ def test_convert_invalid_separator_hours_minutes():
 def  test_convert_without_abbreviation():
     with pytest.raises(ValueError):
         convert("09:00 to 12:00")
+   
+        
+def test_convert_12am_to_12pm():
+    # Test converting 12-hour format from 12:00 AM to 12:00 PM
+    assert convert("12:00 AM to 12:00 PM") == "00:00 to 12:00"
+
+
+def test_convert_12pm_to_12am():
+    # Test converting 12-hour format from 12:00 PM to 12:00 AM
+    assert convert("12:00 PM to 12:00 AM") == "12:00 to 00:00"
+
+
+def test_convert_invalid_format():
+    # Test an invalid time format
+    with pytest.raises(ValueError):
+        convert("9 AM - 5 PM")
+
+
+def test_convert_invalid_hour():
+    # Test an invalid hour value (greater than 12)
+    with pytest.raises(ValueError):
+        convert("13 AM to 5 PM")
+
+
+def test_convert_invalid_minute():
+    # Test an invalid minute value (greater than 59)
+    with pytest.raises(ValueError):
+        convert("9:30 AM to 5:60 PM")
