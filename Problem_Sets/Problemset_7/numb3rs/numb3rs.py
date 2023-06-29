@@ -102,10 +102,7 @@ def validate(ip: str) -> bool:
             return False
         
         # each block can contain only numbers
-        for block in number_blocks:
-            if block.startswith('0'):
-                return False
-            
+        for block in number_blocks:  
             try:
                 number = int(block)
                 

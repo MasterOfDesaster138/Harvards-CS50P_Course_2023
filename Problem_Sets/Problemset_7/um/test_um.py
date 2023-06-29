@@ -67,13 +67,13 @@ def test_count_sentence():
 def test_count_ignore_punctuation():
     assert um.count("Um, thanks, um...") == 2
     assert um.count("Um, thanks for the album.") == 1
-    assert um.count("Um.. um! um? um_") == 4
+    assert um.count("Um.. um! um? um@") == 4
     
     
 def test_count_ignore_similar_words():
-# Collection of some similiar words 
-similiar_words = ["sum", "mum", "gum", "hum", "rum", "lum", "ump", "vum", "umm", "yum"]
+    # Collection of some similiar words 
+    similiar_words = ["sum", "mum", "gum", "hum", "rum", "lum", "ump", "vum", "umm", "yum"]
     # we expect that the program will ignore all words
-    assert um.count(str.join(similiar_words)) == 0
+    assert um.count(" ".join(similiar_words)) == 0
     
     
