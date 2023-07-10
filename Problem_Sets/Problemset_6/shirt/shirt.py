@@ -151,11 +151,14 @@ def input_image_processing(input: str, output: str) -> None:
         Image: returns the Imagefile of the result after saving the file
     """
     try:
+        # load the images for modification
         shirt = Image.open(r"Problem_Sets/Problemset_6/shirt/shirt.png")
         input_img = Image.open(input)
+        # edit the images based on instructions
         input_cropped = ImageOps.fit(input_img, shirt.size)
         input_cropped.paste(shirt, shirt)
         input_cropped.save(output)
+    # catch a Error and print a error message
     except FileNotFoundError:
         sys.exit(ERROR_MESSAGES["file_not_found"])
 
