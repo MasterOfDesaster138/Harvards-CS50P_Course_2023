@@ -93,7 +93,7 @@ def main():
     if validate_user_input(sys.argv):
         input, output =  sys.argv[1], sys.argv[2] # ( Reference-image | Input-image | Output-image )
         # Processes the input images according to given instructions (see in header)
-        output_image = input_image_processing(input, output)
+        input_image_processing(input, output)
         # exit the programm after finished image processing
         quit()
 
