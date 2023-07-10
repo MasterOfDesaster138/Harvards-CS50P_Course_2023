@@ -73,27 +73,22 @@
             Expects the user to provide two command-line arguments:
             the name of an existing CSV file to read as input,
             whose columns are assumed to be, in order, name and house, and
-            the name of a new CSV to write as output, whose columns should be, in order, first, last, and house.
+            the name of a new CSV to write as output,
+            whose columns should be, in order, first, last, and house.
             Converts that input to that output, splitting each name into a first name and last name.
             Assume that each student will have both a first name and last name.
             If the user does not provide exactly two command-line arguments,
-            or if the first cannot be read, the program should exit via sys.exit with an error message.
+            or if the first cannot be read,
+            the program should exit via sys.exit with an error message.
 """
-
-""" Hints:
-Note that csv module comes with quite a few methods, per docs.python.org/3/library/csv.html, among which are DictReader,
-per docs.python.org/3/library/csv.html#csv.DictReader and DictWriter, per docs.python.org/3/library/csv.html#csv.DictWriter.
-
-Note that you can tell a DictWriter to write its fieldnames to a file using writeheader with no arguments,
-per docs.python.org/3/library/csv.html#csv.DictWriter.writeheader."""
 import csv  # for reading the CSV file and usage of the DictReader and DictWriter
 import sys  # for handling command-line arguments and exiting the program
 
 
-
-##### Functions: #####
+                        ##### Functions: #####
 
 def main():
+    """Validates the CL-Args, transforms the given data and writes it to the given file """
     # Validate the inputted command-line paramters specified from the user
     if validate_user_input(sys.argv):
         # unpack the required file names from user input
@@ -109,7 +104,7 @@ def main():
         output_file_writer(tranformed_data, output_file)
 
         # After writing the data to the file, we can close the program
-        quit()
+        sys.exit()
 
 
 
@@ -123,7 +118,8 @@ def validate_user_input(cl_parameters: list) -> bool:
         bool: indicates if the validation was succesfull or not
 
     Raises:
-        SystemExit:  If the user does not provide exactly two command-line arguments, or the first parameter is not a CSV file.
+        SystemExit: If the user does not provide exactly two command-line arguments,
+                    or the first parameter is not a CSV file.
     """
     # the user must provide exactly two command-line arguments
     if len(cl_parameters) < 3:
@@ -171,7 +167,8 @@ def input_file_reader(input_file: str) -> list:
 
 
 def tranformate_data_schema(input_data: list) -> list:
-    """tranformate_data_schema from [name, house] to new schema [firstname, lastname, house] and returns converted data collection.
+    """tranformate_data_schema from [name, house] to
+    new schema [firstname, lastname, house] and returns converted data collection.
 
     Args:
         input_data (list): collected data from inputted file, specified by the user
@@ -203,14 +200,15 @@ def output_file_writer(datacollection: list, output_file: str) -> None:
     new_fieldnames = ("first", "last", "house")
 
     # opens the specified output file in append mode for writing operations
-    with open(output_file, 'a', newline="") as file:
+    with open(output_file, 'a', newline="", encoding="utf-8") as file:
         # DictWriter parses every row of the collection as an dictionary
         csv_writer = csv.DictWriter(file, fieldnames=new_fieldnames)
         csv_writer.writeheader()
         # Loop through each element of the collection and write the data to the file
         for row in datacollection:
-            csv_writer.writerow({"firstname": row["first"], "lastname": row["last"], "house": row["house"]})
-
+            csv_writer.writerow({"firstname": row["first"],
+                                 "lastname": row["last"],
+                                 "house": row["house"]})
 
 
 if __name__ == '__main__':
