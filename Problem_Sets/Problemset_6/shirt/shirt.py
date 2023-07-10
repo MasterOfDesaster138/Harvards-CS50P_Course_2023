@@ -95,7 +95,7 @@ def main():
         # Processes the input images according to given instructions (see in header)
         input_image_processing(input, output)
         # exit the programm after finished image processing
-        quit()
+        sys.exit()
 
 
 
