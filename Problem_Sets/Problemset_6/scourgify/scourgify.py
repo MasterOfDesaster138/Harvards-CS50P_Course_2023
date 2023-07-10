@@ -195,7 +195,7 @@ def tranformate_data_schema(input_data: list) -> list:
 def output_file_writer(datacollection: list, output_file: str):
 
     # prepare a list with the fieldnames for the output file
-    new_fieldnames = ("firstname", "lastname", "house")
+    new_fieldnames = ("first", "last", "house")
 
     # opens the specified output file in append mode for writing operations
     with open(output_file, 'a', newline="") as file:
