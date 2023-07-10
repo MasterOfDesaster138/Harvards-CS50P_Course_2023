@@ -152,7 +152,7 @@ def input_image_processing(input: str, output: str) -> None:
     """
     try:
         # load the images for modification
-        shirt = Image.open(r"Problem_Sets/Problemset_6/shirt/shirt.png")
+        shirt = Image.open(r"shirt.png")
         input_img = Image.open(input)
         # edit the images based on instructions
         input_cropped = ImageOps.fit(input_img, shirt.size)

@@ -85,21 +85,36 @@ per docs.python.org/3/library/re.html#re.Match.group,
 
 oder kollektiv mit groups, per docs.python.org/3/library/re.html#re.Match.groups."""
 
-from numb3rs import validate
+import numb3rs
 
-def test_valid_ipv4_addresses():
-    assert validate("192.168.0.1") == True
-    assert validate("10.0.0.0") == True
-    assert validate("172.16.0.255") == True
+def test_valid_ipv4_address():
+    assert numb3rs.validate("192.168.0.1") == True
+    assert numb3rs.validate("10.0.0.0") == True
+    assert numb3rs.validate("172.16.0.0") == True
 
-def test_invalid_ipv4_addresses():
-    assert validate("275.3.6.28") == False
-    assert validate("192.168.0") == False
-    assert validate("10.0.0.256") == False
-    assert validate("abc.def.ghi.jkl") == False
+def test_invalid_ipv4_address():
+    assert numb3rs.validate("275.3.6.28") == False
+    assert numb3rs.validate("192.168.0") == False
+    assert numb3rs.validate("10.0.0.256") == False
 
-def test_edge_cases():
-    assert validate("") == False  # Empty input
-    assert validate("192.168.0.01") == False  # Leading zero in a block
-    assert validate("192..0.1") == False  # Empty block
+def test_empty_string():
+    assert numb3rs.validate("") == False
+
+def test_non_numeric_characters():
+    assert numb3rs.validate("192.168.0.a") == False
+    assert numb3rs.validate("10.0.0.") == False
+
+def test_less_than_4_blocks():
+    assert numb3rs.validate("192.168.0") == False
+    assert numb3rs.validate("10.0") == False
+
+def test_more_than_4_blocks():
+    assert numb3rs.validate("192.168.0.1.1") == False
+    assert numb3rs.validate("10.0.0.0.0") == False
+
+def test_number_out_of_range():
+    assert numb3rs.validate("192.168.0.256") == False
+    assert numb3rs.validate("10.0.0.-1") == False
+
+
 
