@@ -36,8 +36,7 @@ size should return the number of cookies actually in the cookie jar.
 Structure your class per the below.
 You may not alter these methods’ parameters,
 but you may add your own methods.
-"""
-"""
+
 class Jar:
     def __init__(self, capacity=12):
         ...
@@ -58,8 +57,7 @@ class Jar:
     @property
     def size(self):
         ...
-"""
-"""
+
 Either before or after you implement jar.py,
 additionally implement, in a file called test_jar.py,
 four or more functions that collectively test
@@ -85,7 +83,7 @@ Implement your tests as you normally would!
 """
 
 class Jar:
-
+    
     def __init__(self, capacity: int = 12, size: int = 0) -> None:
         self.capacity = capacity
         self.size = size
