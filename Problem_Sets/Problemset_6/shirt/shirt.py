@@ -161,7 +161,7 @@ def input_image_processing(input: str, output: str) -> None:
         with Image.open(input) as input_img:
             x, y = shirt.size
             input_cropped = ImageOps.fit(input_img, (x,y))
-            input_cropped.paste(shirt, mask = shirt)
+            input_cropped.paste(shirt, shirt)
             input_cropped.save(output)
     except FileNotFoundError:
         sys.exit(ERROR_MESSAGES['file_not_found'])
