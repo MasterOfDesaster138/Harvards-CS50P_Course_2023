@@ -193,7 +193,7 @@ def tranformate_data_schema(input_data: list) -> list:
 
 
 def output_file_writer(datacollection: list, output_file: str):
-   
+ 
     # prepare a list with the fieldnames for the output file
     new_fieldnames = ("first", "last", "house")
 
