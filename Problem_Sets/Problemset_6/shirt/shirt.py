@@ -153,6 +153,7 @@ def input_image_processing(input: str, output: str) -> None:
     try:
         shirt = Image.open(r"Problem_Sets/Problemset_6/shirt/shirt.png")
         with Image.open(input) as input_img:
+            input_img.load()
             input_cropped = ImageOps.fit(input_img, shirt.size)
             input_cropped.paste(shirt, shirt)
             input_cropped.save(output)
