@@ -153,7 +153,7 @@ def input_file_reader(input_file: str) -> list:
     # Try to open the given file, for reading and collecting the containing csv data
     try:
         # open the given input file in read-mode
-        with open(input_file, 'r') as file:
+        with open(input_file, 'r', encoding="utf-8") as file:
             # DictReader parses each line as an Dictionary
             csv_reader = csv.DictReader(file)
             # iterate through each line and collect the data into a list
