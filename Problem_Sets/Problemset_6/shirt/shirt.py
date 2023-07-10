@@ -91,7 +91,7 @@ VALID_FILE_TYPES = (".jpg", ".jpeg", ".png", ".JPG", ".JPEG", ".PNG")
 def main() -> None:
     # Validates the inputted command-line parameters
     if validate_user_input(sys.argv):
-        input, output = sys.argv[1], sys.argv[2] # ( Reference-image | Input-image | Output-image )
+        input, output = sys.argv[1], sys.argv[2] # ( modulename | Input-image | Output-image )
         # Processes the input images according to given instructions (see in header)
         input_image_processing(input, output)
 
