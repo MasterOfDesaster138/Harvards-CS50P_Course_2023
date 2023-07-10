@@ -3,5 +3,6 @@
         "Problem_Sets"
     ],
     "python.testing.unittestEnabled": false,
-    "python.testing.pytestEnabled": true
+    "python.testing.pytestEnabled": true,
+    "gitdoc.enabled": true
 }
