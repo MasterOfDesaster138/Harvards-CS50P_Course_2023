@@ -69,8 +69,6 @@
     or collectively with groups, per docs.python.org/3/library/re.html#re.Match.groups."""
 # Imports:
 import re
-import sys
-
 
 # Functions:
 def main():
