@@ -83,35 +83,75 @@ Implement your tests as you normally would!
 """
 
 class Jar:
-    
+    """A class representing a cookie jar.
+
+    Args:
+        capacity (int, optional): The maximum capacity of the jar. Defaults to 12.
+        size (int, optional): The current number of cookies in the jar. Defaults to 0.
+
+    Attributes:
+        capacity (int): The maximum capacity of the jar.
+        size (int): The current number of cookies in the jar.
+
+    Raises:
+        ValueError: If the maximum capacity or size is set to an invalid value.
+
+    """
+
     def __init__(self, capacity: int = 12, size: int = 0) -> None:
         self.capacity = capacity
         self.size = size
 
     def __str__(self):
+        """Returns a string representation of the jar using cookie emojis."""
         return "🍪" * self.size
 
+    def deposit(self, number: int) -> None:
+        """Deposits cookies into the jar.
 
-    def deposit(self, n: int) -> None:
-        if (self.size + n) > self.capacity:
+        Args:
+            n (int): The number of cookies to deposit.
+
+        Raises:
+            ValueError: If the maximum capacity of the jar is exceeded.
+
+        """
+        if (self.size + number) > self.capacity:
             raise ValueError("Maximum capacity has been exceeded")
         else:
-            self.size += n
+            self.size += number
 
+    def withdraw(self, number: int) -> None:
+        """Withdraws cookies from the jar.
 
-    def withdraw(self, n: int) -> None:
-        if (self.size - n) < 0:
+        Args:
+            n (int): The number of cookies to withdraw.
+
+        Raises:
+            ValueError: If the jar doesn't have enough cookies to withdraw.
+
+        """
+        if (self.size - number) < 0:
             raise ValueError("The cookie jar has been empty for a long time")
         else:
-            self.size -= n
-
+            self.size -= number
 
     @property
     def capacity(self) -> int:
+        """The maximum capacity of the jar."""
         return self._capacity
 
     @capacity.setter
     def capacity(self, capacity: int) -> None:
+        """Sets the maximum capacity of the jar.
+
+        Args:
+            capacity (int): The maximum capacity of the jar.
+
+        Raises:
+            ValueError: If the capacity is not a positive number.
+
+        """
         if capacity > 0:
             self._capacity = capacity
         else:
@@ -119,10 +159,20 @@ class Jar:
 
     @property
     def size(self):
+        """The current number of cookies in the jar."""
         return self._size
 
     @size.setter
     def size(self, size: int) -> None:
+        """Sets the current number of cookies in the jar.
+
+        Args:
+            size (int): The current number of cookies in the jar.
+
+        Raises:
+            ValueError: If the size is a negative number.
+
+        """
         if size < 0:
             raise ValueError("Cookies are out")
         else:
