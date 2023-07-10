@@ -62,7 +62,6 @@ as few characters as possible will be matched.”"""
 
 # Imports
 import re
-import sys
 
 
 # Functions:
