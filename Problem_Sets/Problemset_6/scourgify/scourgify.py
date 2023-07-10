@@ -204,7 +204,7 @@ def output_file_writer(datacollection: list, output_file: str):
         csv_writer.writeheader()
         # Loop through each element of the collection and write the data to the file
         for row in datacollection:
-            csv_writer.writerow({"first": row["first"], "last": row["last"], "house": row["house"]})
+            csv_writer.writerow({"firstname": row["first"], "lastname": row["last"], "house": row["house"]})
 
 
 
