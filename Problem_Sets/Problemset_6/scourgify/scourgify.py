@@ -166,8 +166,8 @@ def input_file_reader(input_file: str) -> list:
     except FileNotFoundError:
         sys.exit(f"Could not read {input_file}")
 
-    except csv.Error as e:
-        raise e
+    except csv.Error as err:
+        raise err
 
 
 def tranformate_data_schema(input_data: list) -> list:
@@ -193,7 +193,7 @@ def tranformate_data_schema(input_data: list) -> list:
 
 
 def output_file_writer(datacollection: list, output_file: str):
-
+   
     # prepare a list with the fieldnames for the output file
     new_fieldnames = ("first", "last", "house")
 
