@@ -1,23 +1,23 @@
 ##### HOW TO TEST: #####
 """Here’s how to test your code manually:
 
-Run your program with python shirt.py. Your program should exit using sys.exit 
-and provide an error message: Too few command-line arguments   
+Run your program with python shirt.py. Your program should exit using sys.exit
+and provide an error message: Too few command-line arguments
 
-Be sure to download muppets.zip and extract a collection of muppet photos using unzip muppets.zip. 
-Run your program with python shirt.py before1.jpg before2.jpg before3.jpg. 
+Be sure to download muppets.zip and extract a collection of muppet photos using unzip muppets.zip.
+Run your program with python shirt.py before1.jpg before2.jpg before3.jpg.
 Your program should output: Too many command-line arguments
 
-Run your program with python shirt.py before1.jpg invalid_format.bmp. Your program should exit using sys.exit 
+Run your program with python shirt.py before1.jpg invalid_format.bmp. Your program should exit using sys.exit
 and provide an error message: Invalid output
 
-Run your program with python shirt.py before1.jpg after1.png. Your program should exit using sys.exit 
+Run your program with python shirt.py before1.jpg after1.png. Your program should exit using sys.exit
 and provide an error message: Input and output have different extensions
 
-Run your program with python shirt.py non_existent_image.jpg after1.jpg. Your program should exit using sys.exit 
+Run your program with python shirt.py non_existent_image.jpg after1.jpg. Your program should exit using sys.exit
 and provide an error message: Input does not exist
 
-Run your program with python shirt.py before1.jpg after1.jpg. 
+Run your program with python shirt.py before1.jpg after1.jpg.
 Assuming you’ve downloaded and unzipped muppets.zip, your program should create an image like the below:
 
 
@@ -35,16 +35,16 @@ from shirt import validate_user_input, input_image_processing
 
 
 file_path_dict = {
-    'overlay_filepath': r"C:\Users\emely\Documents\GitHub\Harvards-CS50P_Course\Problem_Sets\Problemset_6\shirt\shirt.png",
-    
-    'input_filepath1': r"C:\Users\emely\Documents\GitHub\Harvards-CS50P_Course\Problem_Sets\Problemset_6\shirt\before1.jpg",
-    'output_filepath1': r"C:\Users\emely\Documents\GitHub\Harvards-CS50P_Course\Problem_Sets\Problemset_6\shirt\after1.jpg",
-    
-    'input_filepath2': r"C:\Users\emely\Documents\GitHub\Harvards-CS50P_Course\Problem_Sets\Problemset_6\shirt\before2.jpg",
-    'output_filepath2': r"C:\Users\emely\Documents\GitHub\Harvards-CS50P_Course\Problem_Sets\Problemset_6\shirt\after2.jpg",
-    
-    'input_filepath3': r"C:\Users\emely\Documents\GitHub\Harvards-CS50P_Course\Problem_Sets\Problemset_6\shirt\before3.jpg",
-    'output_filepath3': r"C:\Users\emely\Documents\GitHub\Harvards-CS50P_Course\Problem_Sets\Problemset_6\shirt\after3.jpg",
+    'overlay_filepath': r"Problem_Sets/Problemset_6/shirt/shirt.png",
+
+    'input_filepath1': r"Problem_Sets/Problemset_6/shirt/before1.jpg",
+    'output_filepath1': r"Problem_Sets/Problemset_6/shirt/after1.jpg",
+
+    'input_filepath2': r"Problem_Sets/Problemset_6/shirt/before2.jpg",
+    'output_filepath2': r"Problem_Sets/Problemset_6/shirt/after2.jpg",
+
+    'input_filepath3': r"Problem_Sets/Problemset_6/shirt/before3.jpg",
+    'output_filepath3': r"Problem_Sets/Problemset_6/shirt/after3.jpg",
 }
 
 ##### Test cases based on instructions for manually testing #####
@@ -151,16 +151,16 @@ def test_input_image_processing_output_image_size(test_files):
 
             in sys.argv[1], the name (or path) of a JPEG or PNG to read (i.e., open) as input
             in sys.argv[2], the name (or path) of a JPEG or PNG to write (i.e., save) as output
-            The program should then overlay shirt.png (which has a transparent background) on the input 
+            The program should then overlay shirt.png (which has a transparent background) on the input
             after resizing and cropping the input to be the same size, saving the result as its output.
 
-            Open the input with Image.open, 
-            per pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.open, 
-            resize and crop the input with ImageOps.fit, 
-            per pillow.readthedocs.io/en/stable/reference/ImageOps.html#PIL.ImageOps.fit, 
-            using default values for method, bleed, and centering, overlay the shirt with Image.paste, 
-            per pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.paste, 
-            and save the result with Image.save, 
+            Open the input with Image.open,
+            per pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.open,
+            resize and crop the input with ImageOps.fit,
+            per pillow.readthedocs.io/en/stable/reference/ImageOps.html#PIL.ImageOps.fit,
+            using default values for method, bleed, and centering, overlay the shirt with Image.paste,
+            per pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.paste,
+            and save the result with Image.save,
             per pillow.readthedocs.io/en/stable/reference/Image.html#PIL.Image.Image.save.
 
             The program should instead exit via sys.exit:
@@ -169,11 +169,11 @@ def test_input_image_processing_output_image_size(test_files):
             if the input’s and output’s names do not end in .jpg, .jpeg, or .png, case-insensitively,
             if the input’s name does not have the same extension as the output’s name, or
             if the specified input does not exist.
-            Assume that the input will be a photo of someone posing in just the right way, 
+            Assume that the input will be a photo of someone posing in just the right way,
             like these demos, so that, when they’re resized and cropped, the shirt appears to fit perfectly.
 
-            If you’d like to run your program on a photo of yourself, 
-            first drag the photo over to VS Code’s file explorer, 
-            into the same folder as shirt.py. No need to submit any photos with your code. 
-            But, if you would like, you’re welcome (but not expected) to share a photo of yourself 
+            If you’d like to run your program on a photo of yourself,
+            first drag the photo over to VS Code’s file explorer,
+            into the same folder as shirt.py. No need to submit any photos with your code.
+            But, if you would like, you’re welcome (but not expected) to share a photo of yourself
             wearing your virtual shirt in any of CS50’s communities!"""
