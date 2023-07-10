@@ -101,8 +101,6 @@ def main():
         )  # ( Reference-image | Input-image | Output-image )
         # Processes the input images according to given instructions (see in header)
         input_image_processing(input, output)
-        # exit the programm after finished image processing
-        sys.exit()
 
 
 def validate_user_input(cl_args: list):
