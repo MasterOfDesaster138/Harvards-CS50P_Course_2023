@@ -83,7 +83,7 @@ ERROR_MESSAGES = {
 VALID_FILE_TYPES = ('.jpg', '.jpeg', '.png', '.JPG', '.JPEG', '.PNG')
 
 # Size: (600, 600) w+h as px |
-SHIRT_IMG_PATH = r"C:\Users\emely\Documents\GitHub\Harvards-CS50P_Course\Problem_Sets\Problemset_6\shirt\data\shirt.png"
+SHIRT_IMG_PATH = r"Problem_Sets/Problemset_6/shirt/shirt.png"
 
 
 ##### FUNCTIONS: #####
