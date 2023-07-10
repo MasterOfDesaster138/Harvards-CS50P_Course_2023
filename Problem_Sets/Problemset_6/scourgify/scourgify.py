@@ -86,9 +86,9 @@ per docs.python.org/3/library/csv.html#csv.DictReader and DictWriter, per docs.p
 
 Note that you can tell a DictWriter to write its fieldnames to a file using writeheader with no arguments,
 per docs.python.org/3/library/csv.html#csv.DictWriter.writeheader."""
-##### Imports: #####
-import sys  # for handling command-line arguments and exiting the program
 import csv  # for reading the CSV file and usage of the DictReader and DictWriter
+import sys  # for handling command-line arguments and exiting the program
+
 
 
 ##### Functions: #####
@@ -192,8 +192,13 @@ def tranformate_data_schema(input_data: list) -> list:
     return tranformed_data
 
 
-def output_file_writer(datacollection: list, output_file: str):
-    
+def output_file_writer(datacollection: list, output_file: str) -> None:
+    """Writes the transformed data to the provided file.
+
+    Args:
+        datacollection (list): transformed dataset
+        output_file (str): filename
+    """
     # prepare a list with the fieldnames for the output file
     new_fieldnames = ("first", "last", "house")
 
