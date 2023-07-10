@@ -41,9 +41,8 @@ first drag the photo over to VS Code’s file explorer,
 into the same folder as shirt.py. No need to submit any photos with your code.
 But, if you would like, you’re welcome (but not expected) to share a photo of yourself
 wearing your virtual shirt in any of CS50’s communities!
-"""
 
-""" Hints
+Hints
 Note that you can determine a file’s extension with os.path.splitext, per docs.python.org/3/library/os.path.html#os.path.splitext.
 Note that open can raise a FileNotFoundError, per docs.python.org/3/library/exceptions.html#FileNotFoundError.
 Note that the Pillow package comes with quite a few classes and methods, per pypi.org/project/Pillow.
@@ -63,12 +62,12 @@ wherein the first shirt represents the image to overlay and the second shirt rep
 Note that you can open an image (e.g., shirt.png) in VS Code by running
 code shirt.png
 or by double-clicking its icon in VS Code’s file explorer."""
+import sys  # for handling command-line arguments and exiting the program
+import os  # powerful interface for interaction with the operation system
 from PIL import (
     Image,
     ImageOps,
 )  # provides extensive file format support + powerful image processing capabilities.
-import sys  # for handling command-line arguments and exiting the program
-import os  # powerful interface for interaction with the operation system
 
 
 ##### Variables, Constants and Datacollections: #####
@@ -89,13 +88,10 @@ VALID_FILE_TYPES = (".jpg", ".jpeg", ".png", ".JPG", ".JPEG", ".PNG")
 ##### FUNCTIONS: #####
 
 
-def main():
+def main() -> None:
     # Validates the inputted command-line parameters
     if validate_user_input(sys.argv):
-        input, output = (
-            sys.argv[1],
-            sys.argv[2],
-        )  # ( Reference-image | Input-image | Output-image )
+        input, output = sys.argv[1], sys.argv[2] # ( Reference-image | Input-image | Output-image )
         # Processes the input images according to given instructions (see in header)
         input_image_processing(input, output)
 
