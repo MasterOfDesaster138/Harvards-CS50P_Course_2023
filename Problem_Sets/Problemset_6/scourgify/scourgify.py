@@ -200,14 +200,14 @@ def output_file_writer(datacollection: list, output_file: str) -> None:
     new_fieldnames = ("first", "last", "house")
 
     # opens the specified output file in append mode for writing operations
-    with open(output_file, 'a', newline="", encoding="utf-8") as file:
+    with open(output_file, 'w', newline="", encoding="utf-8") as file:
         # DictWriter parses every row of the collection as an dictionary
         csv_writer = csv.DictWriter(file, fieldnames=new_fieldnames)
         csv_writer.writeheader()
         # Loop through each element of the collection and write the data to the file
         for row in datacollection:
-            csv_writer.writerow({"firstname": row["first"],
-                                 "lastname": row["last"],
+            csv_writer.writerow({"first": row["first"],
+                                 "last": row["last"],
                                  "house": row["house"]})
 
 

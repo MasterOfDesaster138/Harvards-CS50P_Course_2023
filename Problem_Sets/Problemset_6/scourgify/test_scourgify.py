@@ -38,7 +38,7 @@ TEST_DATA = {
     'ERROR_MSG_2': "Too many command-line arguments",
     'ERROR_MSG_3': "Could not read ",
     'INPUT_SCHEMA': ('name', 'house'),
-    'OUTPUT_SCHEMA': ('firstname', 'lastname', 'house'),
+    'OUTPUT_SCHEMA': ('first', 'last', 'house'),
 
     # Prepared argumentslists-Sets for the specific testcases
     'TOO_FEW_ARGS': ["scourgify.py", "before.csv"],
@@ -261,7 +261,7 @@ def test_output_file_writer(tmp_path):
         {"first": "Colin", "last": "Creevey", "house": "Gryffindor"}
     ]
     expected_output = [
-        "firstname,lastname,house",
+        "first,last,house",
         "Hannah,Abbott,Hufflepuff",
         "Katie,Bell,Gryffindor",
         "Colin,Creevey,Gryffindor"
@@ -278,7 +278,7 @@ def test_output_file_writer(tmp_path):
 def test_output_file_writer_empty_data(tmp_path):
     output_file = tmp_path / "output.csv"
     datacollection = []
-    expected_output = ["firstname,lastname,house\n"]  # Aktualisierte erwartete Ausgabe
+    expected_output = ["first,last,house\n"]  # Aktualisierte erwartete Ausgabe
     output_file_writer(datacollection, output_file)
     with open(output_file, "r") as file:
         actual_output = file.readlines()
@@ -298,7 +298,7 @@ def test_output_file_writer_existing_file(tmp_path):
         {"first": "Colin", "last": "Creevey", "house": "Gryffindor"}
     ]
     expected_output = [
-        "firstname,lastname,house\n",
+        "first,last,house\n",
         "Hannah,Abbott,Hufflepuff\n",
         "Katie,Bell,Gryffindor\n",
         "Colin,Creevey,Gryffindor\n"
