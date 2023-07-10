@@ -63,24 +63,27 @@ wherein the first shirt represents the image to overlay and the second shirt rep
 Note that you can open an image (e.g., shirt.png) in VS Code by running
 code shirt.png
 or by double-clicking its icon in VS Code’s file explorer."""
-from PIL import Image, ImageOps     # provides extensive file format support + powerful image processing capabilities.
-import sys                          # for handling command-line arguments and exiting the program
-import os                           # powerful interface for interaction with the operation system
+from PIL import (
+    Image,
+    ImageOps,
+)  # provides extensive file format support + powerful image processing capabilities.
+import sys  # for handling command-line arguments and exiting the program
+import os  # powerful interface for interaction with the operation system
 
 
 ##### Variables, Constants and Datacollections: #####
 
 # Create an Container for all required Errormessages
 ERROR_MESSAGES = {
-    'too_few_args':         "Too few command-line arguments",
-    'too_many_args':        "Too many command-line arguments",
-    'input_file':           "Invalid input",
-    'output_file':          "Invalid output",
-    'diff_file_extensions': "Input and output have different extensions",
-    'file_not_found':       "Input does not exist"
+    "too_few_args": "Too few command-line arguments",
+    "too_many_args": "Too many command-line arguments",
+    "input_file": "Invalid input",
+    "output_file": "Invalid output",
+    "diff_file_extensions": "Input and output have different extensions",
+    "file_not_found": "Input does not exist",
 }
 
-VALID_FILE_TYPES = ('.jpg', '.jpeg', '.png', '.JPG', '.JPEG', '.PNG')
+VALID_FILE_TYPES = (".jpg", ".jpeg", ".png", ".JPG", ".JPEG", ".PNG")
 
 # Size: (600, 600) w+h as px |
 SHIRT_IMG_PATH = r"Problem_Sets/Problemset_6/shirt/shirt.png"
@@ -88,15 +91,18 @@ SHIRT_IMG_PATH = r"Problem_Sets/Problemset_6/shirt/shirt.png"
 
 ##### FUNCTIONS: #####
 
+
 def main():
     # Validates the inputted command-line parameters
     if validate_user_input(sys.argv):
-        input, output =  sys.argv[1], sys.argv[2] # ( Reference-image | Input-image | Output-image )
+        input, output = (
+            sys.argv[1],
+            sys.argv[2],
+        )  # ( Reference-image | Input-image | Output-image )
         # Processes the input images according to given instructions (see in header)
         input_image_processing(input, output)
         # exit the programm after finished image processing
         sys.exit()
-
 
 
 def validate_user_input(cl_args: list):
@@ -115,9 +121,9 @@ def validate_user_input(cl_args: list):
 
     # Program expects exactly two command-line arguments from the user
     if len(cl_args) < 3:
-        sys.exit(ERROR_MESSAGES['too_few_args'])
+        sys.exit(ERROR_MESSAGES["too_few_args"])
     elif len(cl_args) > 3:
-        sys.exit(ERROR_MESSAGES['too_many_args'])
+        sys.exit(ERROR_MESSAGES["too_many_args"])
 
     # Get file names|paths from inputted command line arguments
     input_file, output_file = cl_args[1:3]
@@ -128,19 +134,16 @@ def validate_user_input(cl_args: list):
 
     # Exit the program if the input or output file names do not end in '.jpg', '.jpeg', or '.png', case-insensitively
     if input_path[1] not in VALID_FILE_TYPES:
-        sys.exit(ERROR_MESSAGES['input_file'])
+        sys.exit(ERROR_MESSAGES["input_file"])
     elif output_path[1] not in VALID_FILE_TYPES:
-        sys.exit(ERROR_MESSAGES['output_file'])
-
+        sys.exit(ERROR_MESSAGES["output_file"])
 
     # Check if the file extensions of input and output files match
     if input_path[1] != output_path[1]:
-        sys.exit(ERROR_MESSAGES['diff_file_extensions'])
-
+        sys.exit(ERROR_MESSAGES["diff_file_extensions"])
 
     # If no errors occurred so far, the given input and output files seem to be valid
     return True
-
 
 
 def input_image_processing(input: str, output: str) -> None:
@@ -160,13 +163,12 @@ def input_image_processing(input: str, output: str) -> None:
         shirt = Image.open(r"Problem_Sets/Problemset_6/shirt/shirt.png")
         with Image.open(input) as input_img:
             x, y = shirt.size
-            input_cropped = ImageOps.fit(input_img, (x,y))
+            input_cropped = ImageOps.fit(input_img, (x, y))
             input_cropped.paste(shirt, shirt)
             input_cropped.save(output)
     except FileNotFoundError:
-        sys.exit(ERROR_MESSAGES['file_not_found'])
+        sys.exit(ERROR_MESSAGES["file_not_found"])
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
