@@ -66,7 +66,8 @@ import sys          # for use of command-line arguments
 
 
 def main():
-    if len(sys.arg)
+    if len(sys.arg) <= 1:
+        sys.exit("")
 
 
 def parse_userinput():
