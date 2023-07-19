@@ -71,7 +71,7 @@ def main():
 
 def parse(s: str) -> str:
     # Define the pattern for the Youtube-URL's
-    pattern = (r"<iframe src=\"https?://(www\.)?youtube\.com/embed/([a-zA-Z0-9]+)\"></iframe>")
+    pattern = (r"<iframe src=\"https?://(www\.)?youtube\.com/embed/([a-zA-Z0-9]+)\".?></iframe>")
     # Search for the pattern in the HTML-String
     match = re.search(pattern, s)
 
