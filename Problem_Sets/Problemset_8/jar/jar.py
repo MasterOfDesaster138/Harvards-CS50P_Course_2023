@@ -82,6 +82,7 @@ For simplicity, though, no need to mock any state.
 Implement your tests as you normally would!
 """
 
+
 class Jar:
     """A class representing a cookie jar.
 
