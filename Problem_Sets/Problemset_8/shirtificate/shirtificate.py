@@ -72,7 +72,7 @@ def main():
 
 
 def get_userinput() -> str:
-    """Prompts the user for a name.
+    """Prompts the user for his/her name
     """
     ...
 
