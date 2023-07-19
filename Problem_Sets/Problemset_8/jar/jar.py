@@ -1,5 +1,5 @@
 """
-Title: Problemset_8 - Cookiejat
+Title: Problemset_8 - Cookiejar
 
 Author: Emely Benke
 
