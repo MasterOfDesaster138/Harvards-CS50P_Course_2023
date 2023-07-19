@@ -62,15 +62,14 @@ overlaid on a rendering of shirtificate.png.
 Try a few other names for good measure, too!
 """
 # import fpdf2 library
-import sys          # for use of command-line arguments
+import sys          # for usage of sys.exit
 
 
 def main():
-    if len(sys.arg) <= 1:
-        sys.exit("")
+    # prompts the user for 
 
 
-def parse_userinput():
+def get_userinput():
     ...
 
 
