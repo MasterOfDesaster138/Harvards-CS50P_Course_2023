@@ -71,7 +71,7 @@ def main():
 
 def parse(s: str) -> str:
     # Define the pattern for the Youtube-URL's
-    pattern = r'<iframe\s+src=(?:https?://)?(?:www\.)?youtube\.com/embed/([^\s\"]+)'
+    pattern = r'<iframe src=\"https?://(www\.)?youtube\.com/embed/([a-zA-Z0-9]+)\"></iframe>'
 
 
 
@@ -80,7 +80,7 @@ def parse(s: str) -> str:
 
     if match:
         # Extract the video code from the match substring
-        video_code = match.group(1)
+        video_code = match.group(2)
 
         # Now create the shortend URL in the youtu.be format
         youtube_url = f"https://youtu.be/{video_code}"
