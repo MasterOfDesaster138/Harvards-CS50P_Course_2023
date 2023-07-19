@@ -73,8 +73,11 @@ def main():
 
 def get_userinput() -> str:
     """Prompts the user for his/her name
+
+    Returns:
+        returns the inputted name in the proper format.
     """
-    ...
+    user_input = input("Name: ")
 
 
 def generate_pdf():
