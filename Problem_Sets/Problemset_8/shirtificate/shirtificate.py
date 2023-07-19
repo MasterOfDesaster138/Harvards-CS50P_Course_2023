@@ -81,7 +81,8 @@ def get_userinput() -> str:
 
     # checks if all name contains only letters/numbers or a whitespace
     for char in user_input:
-        if char.isalpha()  char.isspace():
+        if char.isalpha() or char == " ":
+            
 
 
 def generate_pdf():
