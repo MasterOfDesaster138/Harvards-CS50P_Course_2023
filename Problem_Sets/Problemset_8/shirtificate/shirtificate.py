@@ -77,7 +77,8 @@ def get_userinput() -> str:
     Returns:
         returns the inputted name in the proper format.
     """
-    user_input = input("Name: ")
+    user_input = input("Name: ").strip()
+    if 
 
 
 def generate_pdf():
