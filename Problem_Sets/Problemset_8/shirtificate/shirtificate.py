@@ -22,7 +22,8 @@ The format of the PDF should be A4, which is 210mm wide by 297mm tall.
 The top of the PDF should say “CS50 Shirtificate” as text, centered horizontally.
 The shirt’s image should be centered horizontally.
 The user’s name should be on top of the shirt, in white text.
-All other details we leave to you. You’re even welcome to add borders, colors, and lines.
+All other details we leave to you.
+You’re even welcome to add borders, colors, and lines.
 Your shirtificate needn’t match John Harvard’s precisely.
 And no need to wrap long names across multiple lines.
 
@@ -48,5 +49,30 @@ which might otherwise cause your PDF to overflow from one page to two,
 with set_auto_page_break, per "pyfpdf.github.io/fpdf2/Margins.html"
 Note that a cell’s height can be negative, to move it upward.
 You can open shirtificate.pdf, once outputted, by clicking it in VS Code’s file explorer.
+
+
+Here’s how to test your code manually:
+
+Run your program with shirtificate.py.
+Make sure your program prompts you for a name.
+Enter your own name and press Enter.
+Your program should create a file, shirtificate.pdf,
+containing the name you entered as input
+overlaid on a rendering of shirtificate.png.
+Try a few other names for good measure, too!
 """
-from 
+# import fpdf2 library
+import sys          # for use of command-line arguments
+
+
+def main():
+    if len(sys.arg)
+
+
+def parse_userinput():
+    ...
+
+
+def generate_pdf():
+    ...
+
