@@ -66,10 +66,14 @@ import sys          # for usage of sys.exit
 
 
 def main():
-    # prompts the user for 
+    # prompts the user for a name
+    input_name = get_userinput()
 
 
-def get_userinput():
+
+def get_userinput() -> str:
+    """Prompts the user for a name.
+    """
     ...
 
 
