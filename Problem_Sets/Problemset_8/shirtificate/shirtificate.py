@@ -77,12 +77,7 @@ def get_userinput() -> str:
     Returns:
         returns the inputted name in the proper format.
     """
-    user_input = input("Name: ").strip()
-
-    # checks if all name contains only letters/numbers or a whitespace
-    for char in user_input:
-        if char.isalpha() or char == " ":
-            
+    return input("Name: ").strip()
 
 
 def generate_pdf():
