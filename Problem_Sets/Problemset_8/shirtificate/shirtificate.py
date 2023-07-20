@@ -61,30 +61,52 @@ containing the name you entered as input
 overlaid on a rendering of shirtificate.png.
 Try a few other names for good measure, too!
 """
-# import fpdf2 library
-import sys          # for usage of sys.exit
+# Import FPDF-Library for PDF generation
+from fpdf import FPDF                                                   
 
+class Shirtificate:
+    def __init__(self, name):
+        self.name = name
+        self.generate()
+    
+    @classmethod
+    def get_name(cls):
+        """Prompt a name from the user"""
+        name = input("Name: ").strip()
+        return cls(name)
 
-def main():
-    # prompts the user for a name
-    input_name = input("Name: ").strip()
-    # generate the individual pdf with the provided name
-    output_file = generate_pdf(input_name)
-
-
-def generate_pdf(name: str):
-    """Generate the PDF file for output, 
-    based on the requirements from the instructions.
-
-    Requirements:
-        1. The orientation of the PDF should be Portrait.
-        2. The format of the PDF should be A4, which is 210mm wide by 297mm tall.
-        3. The top of the PDF should say “CS50 Shirtificate” as text, centered horizontally.
-        4. The shirt’s image should be centered horizontally.
-        5. The user’s name should be on top of the shirt, in white text.
-
-    Args:
-        name (str): given from user input 
-    """
-    # add the raw image
-
+    def generate(self) -> None:
+        """Generate a personal "Shirtificate" for the given name and save it as PDF."""
+        # create a pdf object
+        pdf = FPDF()
+        # add a blank page to the pdf
+        pdf.add_page()
+        # disable automatic page breaks
+        pdf.set_auto_page_break(auto=False, margin=0)
+        
+        # set required text properties
+        pdf.set_font("Helvetica", "B", 50)
+        title = "CS50 Shirtificate"
+        # write the title on the documents top
+        pdf.cell( # set cursor on the next line
+                    0, 50, txt=title, align='C', new_x="LMARGIN", new_y="NEXT"
+                ) 
+        # load the shirt image into the page
+        pdf.image("shirtificate.png", x=5, y=80, w=200)
+        
+        # write the personal shirt-print on the image 
+        pdf.set_font("Helvetica", "B", size=30)
+        pdf.set_text_color(255, 255, 255)
+        personal_print = f"{self.name} took CS50"
+        pdf.cell(0, 100, align="C", txt=personal_print)
+        
+        # save the created pdf document
+        pdf.output("shirtificate.pdf")
+        
+        
+def main() -> None:
+    Shirtificate.get_name()
+    
+    
+if __name__ == '__main__':
+    main()
