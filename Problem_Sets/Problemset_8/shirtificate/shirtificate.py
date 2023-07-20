@@ -64,6 +64,10 @@ Try a few other names for good measure, too!
 import sys
 
 
+class PDF(FPDF):
+    def image
+
+
 def main():
     # prompts the user for a name
     input_name = get_userinput()
@@ -82,5 +86,5 @@ def get_userinput() -> str:
 def generate_pdf():
     """ """
     from fpdf import FPDF
-    pdf = FPDF()    
+    pdf = FPDF()
 
