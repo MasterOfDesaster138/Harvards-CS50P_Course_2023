@@ -62,14 +62,23 @@ overlaid on a rendering of shirtificate.png.
 Try a few other names for good measure, too!
 """
 # Import FPDF-Library for PDF generation
+<<<<<<< HEAD
 from fpdf import FPDF   
 import datetime                                                 
+=======
+from fpdf import FPDF
+
+>>>>>>> 19c1166de3d30c968abb6d2b5ecd5340ccde565a
 
 class Shirtificate:
     def __init__(self, name):
         self.name = name
         self.generate()
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 19c1166de3d30c968abb6d2b5ecd5340ccde565a
     @classmethod
     def get_name(cls):
         """Prompt a name from the user"""
@@ -84,11 +93,16 @@ class Shirtificate:
         pdf.add_page()
         # disable automatic page breaks
         pdf.set_auto_page_break(auto=False, margin=0)
+<<<<<<< HEAD
         
+=======
+
+>>>>>>> 19c1166de3d30c968abb6d2b5ecd5340ccde565a
         # set required text properties
         pdf.set_font("Helvetica", "B", 50)
         title: str = "CS50 Shirtificate"
         # write the title on the documents top
+<<<<<<< HEAD
         pdf.cell(0, 50, txt=title, align='C')
         pdf.ln()
         
@@ -96,11 +110,21 @@ class Shirtificate:
         pdf.image("shirtificate.png", x=15, y=(297/4), w=180)
         
         # write the personal shirt-print on the image 
+=======
+        pdf.cell(0, 50, txt=title, align="C")
+        pdf.ln()
+
+        # load the shirt image into the page
+        pdf.image("shirtificate.png", x=15, y=(297 / 4), w=180)
+
+        # write the personal shirt-print on the image
+>>>>>>> 19c1166de3d30c968abb6d2b5ecd5340ccde565a
         pdf.set_font("Helvetica", "B", size=20)
         pdf.set_text_color(255, 255, 255)
         personal_print = f"{self.name} took CS50"
         pdf.cell(0, 150, align="C", txt=personal_print)
         pdf.ln()
+<<<<<<< HEAD
         
         # save the created pdf document
         pdf.output("shirtificate.pdf")
@@ -112,3 +136,16 @@ def main() -> None:
     
 if __name__ == '__main__':
     main()
+=======
+
+        # save the created pdf document
+        pdf.output("shirtificate.pdf")
+
+
+def main() -> None:
+    Shirtificate.get_name()
+
+
+if __name__ == "__main__":
+    main()
+>>>>>>> 19c1166de3d30c968abb6d2b5ecd5340ccde565a

@@ -53,63 +53,60 @@ what output it expected, and what output your program actually gave."""
     or if the specified file’s name does not end in .csv, 
     or if the specified file does not exist, 
     the program should instead exit via sys.exit."""
-    
-# import the functions we want to test from pizza.py 
-from pizza import validate_cl_parameter, generate_pizza_table 
+
+# import the functions we want to test from pizza.py
+from pizza import validate_cl_parameter, generate_pizza_table
 import pytest
 
 
-# simulate required data for proper functions testing 
+# simulate required data for proper functions testing
 TEST_DATA = {
-    'sicilian_params': ["pizza.py", "sicilian.csv"],
-    
-    'regular_params': ["pizza.py", "regular.csv"], 
-    
-    'too_few_params': ["pizza.py"], 
-    
-    'too_many_params': [ 
+    "sicilian_params": ["pizza.py", "sicilian.csv"],
+    "regular_params": ["pizza.py", "regular.csv"],
+    "too_few_params": ["pizza.py"],
+    "too_many_params": [
         ["pizza.py", "regular.csv", "sicilian.csv"],
-        ["pizza.py", "regular.csv", "sicilian.csv", "-grid"]
-        ],
-    
-    'invalid_file_extension': [
+        ["pizza.py", "regular.csv", "sicilian.csv", "-grid"],
+    ],
+    "invalid_file_extension": [
         ["pizza.py", "regular.txt"],
-        ["pizza.py", "regular.xsv"] 
-    ]
+        ["pizza.py", "regular.xsv"],
+    ],
 }
 
 
 ##### Testcases for validate_cl_paramter() #####
 
+
 def test_validate_cl_parameters_quantity_few(capfd):
     """Tests if the program exits with the correct errormessage, if there are too few cl parameters inputted."""
     expected_error_message = "Too few command-line arguments"
-    
+
     # setup the simulated values as cl-parameters for proper testing
-    fake_params = TEST_DATA["too_few_params"] 
-    
+    fake_params = TEST_DATA["too_few_params"]
+
     # Testing how the function handles too few cl-parameters
     with pytest.raises(SystemExit) as run_info:
         validate_cl_parameter(fake_params)
-        
+
         # Check if 'sys.exit' was called
         assert run_info.type == SystemExit
-        
+
         # Get the output message of the standard output stream
         captured = capfd.readouterr()
         error_message = captured.err.strip()
-        
+
         # Compare captured error message with the expected error message from the requirements
         assert error_message == expected_error_message
-    
+
 
 def test_validate_cl_parameters_quantity_many(capfd):
     """Tests if the program exits with the correct errormessage, if there are too many cl parameters inputted."""
     expected_error_message = "Too many command-line arguments"
-    
+
     # setup the simulated values as cl-parameters for proper testing
-    fake_params1, fake_params2 = TEST_DATA["too_many_params"] 
-    
+    fake_params1, fake_params2 = TEST_DATA["too_many_params"]
+
     # Testcase 1:
     with pytest.raises(SystemExit) as run_info:
         validate_cl_parameter(fake_params1)
@@ -137,8 +134,8 @@ def test_validate_cl_parameters_file_extensions_invalid(capfd):
     """Tests if the program exits with the correct errormessage, if the inputted file is not an CSV."""
     expected_error_message = "Not a CSV file"
     # setup the simulated values as cl-parameters for proper testing
-    fake_params1, fake_params2 = TEST_DATA['invalid_file_extension'] 
-    
+    fake_params1, fake_params2 = TEST_DATA["invalid_file_extension"]
+
     # Testcase 1:
     with pytest.raises(SystemExit) as run_info:
         validate_cl_parameter(fake_params1)
@@ -166,29 +163,29 @@ def test_validate_cl_parameters_file_extensions_valid():
     """Tests if the functions returns excepted value, if the inputted cl-parameter is valid."""
     # setup the simulated values as cl-parameters for proper testing
     valid_params1 = TEST_DATA["regular_params"]
-    valid_params2 = TEST_DATA["sicilian_params"] 
-    
+    valid_params2 = TEST_DATA["sicilian_params"]
+
     assert validate_cl_parameter(valid_params1) == "regular.csv"
     assert validate_cl_parameter(valid_params2) == "sicilian.csv"
 
 
-
 ##### Testcases for generate_pizza_table() #####
+
 
 def test_generate_pizza_table_file_not_exists(capfd):
     """Tests if the program exits with the correct errormessage, if the file doesn't exists."""
     expected_error_message = "File does not exist"
-    
+
     with pytest.raises(SystemExit) as run_info:
-        generate_pizza_table('invalid_file.csv')
-        
+        generate_pizza_table("invalid_file.csv")
+
         # Check if 'sys.exit' was called
         assert run_info.type == SystemExit
-        
+
         # Get the output message of the standard output stream
         captured = capfd.readouterr()
         error_message = captured.err.strip()
-        
+
         # Compare captured error message with the expected error message from the requirements
         assert error_message == expected_error_message
 
@@ -210,9 +207,8 @@ def test_generate_pizza_table_output_regular():
 +-----------------+---------+---------+"""
 
     file_name = r"C:\Users\emely\Documents\GitHub\Harvards-CS50P_Course\Problem_Sets\Problemset_6\pizza\regular.csv"
-    
-    assert generate_pizza_table(file_name) == expected_output
 
+    assert generate_pizza_table(file_name) == expected_output
 
 
 def test_generate_pizza_table_output_sicilian():
@@ -230,7 +226,7 @@ def test_generate_pizza_table_output_sicilian():
 +------------------+---------+---------+
 | Special          | $33.50  | $47.95  |
 +------------------+---------+---------+"""
-    
+
     file_name = r"C:\Users\emely\Documents\GitHub\Harvards-CS50P_Course\Problem_Sets\Problemset_6\pizza\sicilian.csv"
-    
+
     assert generate_pizza_table(file_name) == expected_output

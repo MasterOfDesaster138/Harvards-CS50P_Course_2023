@@ -116,18 +116,6 @@ def test_validate_user_input_valid_input():
 
 ###### Test cases for input_image_processing function: #####
 
-@pytest.fixture
-def test_files(tmp_path):
-    # Create temporary input and output files for testing
-    input_file = os.path.join(tmp_path, "input.jpg")
-    output_file = os.path.join(tmp_path, "output.jpg")
-
-    # Create a dummy input image
-    input_img = Image.new("RGB", (800, 600), color="red")
-    input_img.save(input_file)
-
-    return input_file, output_file
-
 def test_input_image_processing_file_not_found():
     with pytest.raises(SystemExit):
         input_image_processing("invalid_input.jpg", "output.jpg")
