@@ -2,29 +2,29 @@
 
 Repo for the participation at Harvards CS50P Course -> Introduction to Programming with Python
 
-Enrolled at 2023-05-25 from edX
+Enrolled on 2023-05-25 by edX
 
-Repository contains:
+**Repository contains:**
 
 - Problem-Set-Solutions of each Lecture
-- Notes, Cheatsheets etc
+- Lecturenotes, Testscripts, required data etc.
 
 ## Course-Roadmap
 
----------------------------------------------------
-    0. Introduction
-    1. *1. Week* | Functions & Variables | [Problemset_0]
-    2. *2. Week* | Conditionals | [Problemset_1] 
-    3. *3. Week* | Loops | [Problemset_2]
-    4. *4. Week* | Exceptions | [Problemset_3]
-    5. *5. Week* | Libraries | [Problemset_4]
-    6. *6. Week* | Unit Tests | [Problemset_5]
-    7. *7. Week* | File I/O | [Problemset_6]
-    8. *8. Week* | Regular Expressions | [Problemset_7]
-    9. *9. Week* | OOP | [Problemset_8]
-    10. *10. Week* | Et Cetera | [Problemset_9]
+-------------------------------------------------------------------------------------------------
+    1.  1. Week      | Functions & Variables    | [Problemset_0]
+    2.  2. Week      | Conditionals             | [Problemset_1] 
+    3.  3. Week      | Loops                    | [Problemset_2]
+    4.  4. Week      | Exceptions               | [Problemset_3]
+    5.  5. Week      | Libraries                | [Problemset_4]
+    6.  6. Week      | Unit Tests               | [Problemset_5]
+    7.  7. Week      | File I/O                 | [Problemset_6]
+    8.  8. Week      | Regular Expressions      | [Problemset_7]
+    9.  9. Week      | OOP                      | [Problemset_8]
+    10. 10. Week     | Et Cetera                | only Lecture (final project in separate repo)
+-------------------------------------------------------------------------------------------------
 
-## How to run check50 + submit50
+### How to run check50 + submit50
 
 check50 _owner_/_repo_/_branch_/_check_
 
@@ -44,7 +44,7 @@ submit50 _owner_/_repo_/_branch_/_check_
     - Deep Thought
     - File Extensions
     - Math Interpreter
-    - Meal Time (With & without optional Challenge)
+    - Meal Time
 
 **Problemset_2 - Loops:**
     - camelCase
@@ -84,3 +84,8 @@ submit50 _owner_/_repo_/_branch_/_check_
     - Working 9 to 5
     - Regular, um, Expressions
     - Response Validation
+
+**Problemset_8 - Object-Oriented Programming:**
+    - Seasons of Love
+    - Cookie Jar
+    - CS50 Shirtificate
