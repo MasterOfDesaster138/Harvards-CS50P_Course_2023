@@ -64,27 +64,17 @@ Try a few other names for good measure, too!
 import sys
 
 
-class PDF(FPDF):
-    def image
-
-
 def main():
     # prompts the user for a name
-    input_name = get_userinput()
-
-
-
-def get_userinput() -> str:
-    """Prompts the user for his/her name
-
-    Returns:
-        returns the inputted name in the proper format.
-    """
-    return input("Name: ").strip()
+    input_name = input("Name: ").strip()
 
 
 def generate_pdf():
     """ """
+    # Import FPDF for PDF document generation
     from fpdf import FPDF
+    # Instanciate the FPDF Class
     pdf = FPDF()
+    # Load raw image into the document
 
+    # set font for the
