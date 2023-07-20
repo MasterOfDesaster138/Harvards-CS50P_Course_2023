@@ -62,7 +62,8 @@ overlaid on a rendering of shirtificate.png.
 Try a few other names for good measure, too!
 """
 # Import FPDF-Library for PDF generation
-from fpdf import FPDF                                                   
+from fpdf import FPDF   
+import datetime                                                 
 
 class Shirtificate:
     def __init__(self, name):
@@ -78,7 +79,7 @@ class Shirtificate:
     def generate(self) -> None:
         """Generate a personal "Shirtificate" for the given name and save it as PDF."""
         # create a pdf object
-        pdf = FPDF()
+        pdf = FPDF(orientation="portrait", format="A4")
         # add a blank page to the pdf
         pdf.add_page()
         # disable automatic page breaks
@@ -86,19 +87,20 @@ class Shirtificate:
         
         # set required text properties
         pdf.set_font("Helvetica", "B", 50)
-        title = "CS50 Shirtificate"
+        title: str = "CS50 Shirtificate"
         # write the title on the documents top
-        pdf.cell( # set cursor on the next line
-                    0, 50, txt=title, align='C', new_x="LMARGIN", new_y="NEXT"
-                ) 
+        pdf.cell(0, 50, txt=title, align='C')
+        pdf.ln()
+        
         # load the shirt image into the page
-        pdf.image("shirtificate.png", x=5, y=80, w=200)
+        pdf.image("shirtificate.png", x=15, y=(297/4), w=180)
         
         # write the personal shirt-print on the image 
-        pdf.set_font("Helvetica", "B", size=30)
+        pdf.set_font("Helvetica", "B", size=20)
         pdf.set_text_color(255, 255, 255)
         personal_print = f"{self.name} took CS50"
-        pdf.cell(0, 100, align="C", txt=personal_print)
+        pdf.cell(0, 150, align="C", txt=personal_print)
+        pdf.ln()
         
         # save the created pdf document
         pdf.output("shirtificate.pdf")
