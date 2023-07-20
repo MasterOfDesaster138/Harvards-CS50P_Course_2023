@@ -48,7 +48,7 @@ Also assert that, if you withdraw more than the jar’s size, withdraw should ra
 Run your tests with pytest test_jar.py.
 """
 import pytest
-from jar import Jar
+from jar import Jar   # type: ignore
 
 
 def test_init_default():
