@@ -61,8 +61,7 @@ containing the name you entered as input
 overlaid on a rendering of shirtificate.png.
 Try a few other names for good measure, too!
 """
-# import fpdf2 library
-import sys          # for usage of sys.exit
+import sys
 
 
 def main():
@@ -81,5 +80,7 @@ def get_userinput() -> str:
 
 
 def generate_pdf():
-    ...
+    """ """
+    from fpdf import FPDF
+    pdf = FPDF()    
 
